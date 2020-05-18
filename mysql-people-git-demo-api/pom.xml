@@ -36,6 +36,23 @@
                             <artifactId>mysql-connector-java</artifactId>
                         </sharedLibrary>
                     </sharedLibraries>
+                    <cloudHubDeployment> 
+                      <uri>https://anypoint.mulesoft.com</uri>
+                      <muleVersion>4.3.0</muleVersion> 
+                      <username>${mule.username}</username> 
+                      <password>${mule.password}</password>
+                      <applicationName>mysql-people-api-51120</applicationName>
+                      <environment>Sandbox</environment> 
+                      <region>us-east-2</region>
+                      <workerType>MICRO</workerType>
+                      <properties> 
+                        <mysql.host>${mysql.host}</mysql.host> 
+                        <mysql.port>${mysql.port}</mysql.port> 
+                        <mysql.user>${mysql.user}</mysql.user> 
+                        <mysql.password>${mysql.password}</mysql.password> 
+                        <mysql.db>${mysql.db}</mysql.db> 
+                      </properties> 
+                    </cloudHubDeployment>
                 </configuration>
 			</plugin>
 		</plugins>
