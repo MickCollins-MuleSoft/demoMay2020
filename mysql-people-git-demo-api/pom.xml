@@ -8,6 +8,7 @@
     <packaging>mule-application</packaging>
 
 	<name>mysql-people-git-demo-api</name>
+	
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -46,9 +47,9 @@
                       <properties> 
                         <mysql.host>${mysql.host}</mysql.host> 
                         <mysql.port>${mysql.port}</mysql.port> 
-                        <mysql.username>${mysql.user}</mysql.user> 
+                        <mysql.username>${mysql.user}</mysql.username> 
                         <mysql.password>${mysql.password}</mysql.password> 
-                        <mysql.database>${mysql.database}</mysql.db> 
+                        <mysql.database>${mysql.database}</mysql.database> 
                       </properties> 
                     </cloudHubDeployment>
                 </configuration>
