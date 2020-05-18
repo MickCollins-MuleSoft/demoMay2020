@@ -133,7 +133,7 @@ output application/json
     </flow>
     <flow name="get:\people:mysql-people-api-config">
         <db:select doc:name="Select" doc:id="4bac730c-f1a5-446c-9a9b-f38e7b923da9" config-ref="Database_Config">
-			<db:sql ><![CDATA[select id, fName, lName, governmentID, xrefID from people;]]></db:sql>
+			<db:sql ><![CDATA[select id, fName, lName, governmentID, issuingGovernment, xrefID from people;]]></db:sql>
 		</db:select>
 		<ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
             <ee:message>
@@ -144,6 +144,7 @@ payload map ( payload01 , indexOfPayload01 ) -> {
 	lastName: payload01.lName,
 	systemID: payload01.id as String,
 	globalID: payload01.xrefID default "",
+	issuingGovernment: payload01.issuingGovernment,
 	firstName: payload01.fName,
 	governmentID: payload01.governmentID
 }]]></ee:set-payload>
