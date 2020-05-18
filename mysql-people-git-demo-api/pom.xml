@@ -51,7 +51,7 @@
                         <mysql.port>${mysql.port}</mysql.port> 
                         <mysql.username>${mysql.user}</mysql.user> 
                         <mysql.password>${mysql.password}</mysql.password> 
-                        <mysql.database>${mysql.db}</mysql.db> 
+                        <mysql.database>${mysql.database}</mysql.db> 
                       </properties> 
                     </cloudHubDeployment>
                 </configuration>
