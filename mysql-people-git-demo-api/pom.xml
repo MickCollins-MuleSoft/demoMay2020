@@ -49,9 +49,9 @@
                       <properties> 
                         <mysql.host>${mysql.host}</mysql.host> 
                         <mysql.port>${mysql.port}</mysql.port> 
-                        <mysql.user>${mysql.user}</mysql.user> 
+                        <mysql.username>${mysql.user}</mysql.user> 
                         <mysql.password>${mysql.password}</mysql.password> 
-                        <mysql.db>${mysql.db}</mysql.db> 
+                        <mysql.database>${mysql.db}</mysql.db> 
                       </properties> 
                     </cloudHubDeployment>
                 </configuration>
