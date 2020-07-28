@@ -16,6 +16,6 @@ accessToken=$(curl -sk https://gov.anypoint.mulesoft.com/accounts/api/v2/oauth2/
 
 echo "Access Token $accessToken"
 
-mvn -f pom.xml clean package deploy -DmuleDeploy -DauthorizationToken=$accessToken -Dmysql.host=$mysqlHost -Dmysql.port=$mysqlPort -Dmysql.username=$mysqlUsername -Dmysql.password=$mysqlPassword -Dmysql.database=$mysqlDatabase -DmuleDeploy'
+mvn -f mysql-deploy-govcloud-api/pom.xml clean package deploy -DmuleDeploy -DauthorizationToken=$accessToken -Dmysql.host=$mysqlHost -Dmysql.port=$mysqlPort -Dmysql.username=$mysqlUsername -Dmysql.password=$mysqlPassword -Dmysql.database=$mysqlDatabase -DmuleDeploy'
 
 echo End of Script
