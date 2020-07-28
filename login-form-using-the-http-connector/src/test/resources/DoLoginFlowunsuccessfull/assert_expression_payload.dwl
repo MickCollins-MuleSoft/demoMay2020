@@ -1,0 +1,4 @@
+%dw 2.0
+import * from dw::test::Asserts
+---
+payload must equalTo("<!--\n\n    MuleSoft Examples\n    Copyright 2014 MuleSoft, Inc.\n\n    This product includes software developed at\n    MuleSoft, Inc. (http://www.mulesoft.com/).\n\n-->\n\n<html>\n\t<body>\n\t\tWrong username or password! Try again.\n\t\t<form action=\"/login\" method=\"POST\">\n\t\t\tUsername: <input type=\"text\" name=\"username\" id=\"username\"/>\n\t\t\tPassword: <input type=\"password\" name=\"password\" id=\"password\"/>\n\t\t\t<input type=\"submit\" name=\"Submit\" value=\"Submit\" id=\"submit\"/>\n\t\t</form>\n\t</body>\n</html>")

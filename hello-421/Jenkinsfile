@@ -1,0 +1,28 @@
+pipeline {
+  agent any
+
+  environment {  
+    ANYPOINT_CREDENTIALS = credentials('Anypoint') 
+  }
+  
+  tools{
+      maven 'Maven_Local3.6.2'
+    }
+  stages {
+    //---------------------------------------------------
+    //Deploy to GovCloud, MC
+    //---------------------------------------------------
+    stage('Deploy Government Cloud') {
+      //environment {  MYSQL_CREDENTIALS = credentials('AWS_RDS_PERS')
+      // add Connected App Client Id and Client Secret to the Jenkins credentials and 
+      //   pass the values as parameters to the deploy.sh to make it more reusable
+      //   GC_CA GovCloud_ConnectedApp
+      }  
+      steps {
+        sh '. ./deploy.sh'
+        //sh 'bash ./deploy.sh ${GC_CA_CREDENTIALS_USR} ${GC_CA_CREDENTIALS_PSW}
+      }
+      //comment lines begin with double slash, keep this as a reminder
+    }
+  }
+}

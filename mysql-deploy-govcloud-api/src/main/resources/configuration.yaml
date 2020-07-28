@@ -1,0 +1,6 @@
+mysql:
+  host: "52.55.148.195"
+  port: "3306"
+  username: "PeopleReadOnly"
+  password: "MuleSoft1"
+  database: "People_MySQL"

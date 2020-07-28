@@ -1,0 +1,118 @@
+2020-05-27 11:15:43,465 [main] INFO  org.mule.munit.remote.RemoteRunner - Run Started
+2020-05-27 11:15:43,527 [main] INFO  org.mule.munit.remote.notifiers.SocketNotifier - Connected to localhost on port 57239
+2020-05-27 11:15:44,022 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: com.mulesoft.mule.distributions:mule-runtime-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:15:45,364 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: org.mule.distributions:mule-module-embedded-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:15:45,541 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: com.mulesoft.mule.distributions:mule-runtime-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:15:49,595 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Starting coverage server
+2020-05-27 11:15:49,596 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage Server starting...
+2020-05-27 11:15:49,596 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Waiting for coverage client connection in port [50352]...
+2020-05-27 11:15:58,859 [main] INFO  org.mule.munit.remote.container.SuiteRunDispatcher - Suite test-suite.xml will not be deployed: Suite was filtered from running
+2020-05-27 11:15:58,904 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage client connection received from localhost - true
+2020-05-27 11:15:58,909 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage client connection received from localhost - true
+2020-05-27 11:15:58,916 [pool-4-thread-1] INFO  org.mule.munit.remote.coverage.CoverageManager - accumulating covered locations
+2020-05-27 11:15:58,917 [pool-5-thread-1] INFO  org.mule.munit.remote.coverage.CoverageManager - accumulating covered locations
+2020-05-27 11:16:00,983 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Shutting down coverage server
+2020-05-27 11:16:00,983 [pool-3-thread-1] ERROR org.mule.munit.plugins.coverage.server.CoverageServer - Failed to start Coverage Server in port 50352
+2020-05-27 11:16:00,983 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Calculating application coverage
+2020-05-27 11:16:01,001 [main] INFO  org.mule.munit.remote.RemoteRunner - Done
+2020-05-27 11:34:07,456 [main] INFO  org.mule.munit.remote.RemoteRunner - Run Started
+2020-05-27 11:34:07,514 [main] INFO  org.mule.munit.remote.notifiers.SocketNotifier - Connected to localhost on port 57472
+2020-05-27 11:34:07,981 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: com.mulesoft.mule.distributions:mule-runtime-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:34:09,312 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: org.mule.distributions:mule-module-embedded-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:34:09,479 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: com.mulesoft.mule.distributions:mule-runtime-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:34:13,064 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Starting coverage server
+2020-05-27 11:34:13,064 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage Server starting...
+2020-05-27 11:34:13,065 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Waiting for coverage client connection in port [50181]...
+2020-05-27 11:34:25,427 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage client connection received from localhost - true
+2020-05-27 11:34:25,430 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage client connection received from localhost - true
+2020-05-27 11:34:25,445 [pool-4-thread-1] INFO  org.mule.munit.remote.coverage.CoverageManager - accumulating covered locations
+2020-05-27 11:34:25,445 [pool-5-thread-1] INFO  org.mule.munit.remote.coverage.CoverageManager - accumulating covered locations
+2020-05-27 11:34:31,715 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Shutting down coverage server
+2020-05-27 11:34:31,715 [pool-3-thread-1] ERROR org.mule.munit.plugins.coverage.server.CoverageServer - Failed to start Coverage Server in port 50181
+2020-05-27 11:34:31,716 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Calculating application coverage
+2020-05-27 11:34:31,733 [main] INFO  org.mule.munit.remote.RemoteRunner - Done
+2020-05-27 11:40:30,472 [main] INFO  org.mule.munit.remote.RemoteRunner - Run Started
+2020-05-27 11:40:30,528 [main] INFO  org.mule.munit.remote.notifiers.SocketNotifier - Connected to localhost on port 57681
+2020-05-27 11:40:30,926 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: com.mulesoft.mule.distributions:mule-runtime-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:40:32,160 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: org.mule.distributions:mule-module-embedded-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:40:32,316 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: com.mulesoft.mule.distributions:mule-runtime-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:40:36,010 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Starting coverage server
+2020-05-27 11:40:36,012 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage Server starting...
+2020-05-27 11:40:36,012 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Waiting for coverage client connection in port [50153]...
+2020-05-27 11:40:45,936 [main] INFO  org.mule.munit.remote.container.SuiteRunDispatcher - Suite test-suite.xml will not be deployed: Suite was filtered from running
+2020-05-27 11:40:45,987 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage client connection received from localhost - true
+2020-05-27 11:40:45,993 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage client connection received from localhost - true
+2020-05-27 11:40:45,999 [pool-4-thread-1] INFO  org.mule.munit.remote.coverage.CoverageManager - accumulating covered locations
+2020-05-27 11:40:46,007 [pool-5-thread-1] INFO  org.mule.munit.remote.coverage.CoverageManager - accumulating covered locations
+2020-05-27 11:40:48,095 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Shutting down coverage server
+2020-05-27 11:40:48,096 [pool-3-thread-1] ERROR org.mule.munit.plugins.coverage.server.CoverageServer - Failed to start Coverage Server in port 50153
+2020-05-27 11:40:48,096 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Calculating application coverage
+2020-05-27 11:40:48,111 [main] INFO  org.mule.munit.remote.RemoteRunner - Done
+2020-05-27 11:42:12,808 [main] INFO  org.mule.munit.remote.RemoteRunner - Run Started
+2020-05-27 11:42:12,862 [main] INFO  org.mule.munit.remote.notifiers.SocketNotifier - Connected to localhost on port 57713
+2020-05-27 11:42:13,267 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: com.mulesoft.mule.distributions:mule-runtime-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:42:14,447 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: org.mule.distributions:mule-module-embedded-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:42:14,604 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: com.mulesoft.mule.distributions:mule-runtime-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:42:18,238 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Starting coverage server
+2020-05-27 11:42:18,239 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage Server starting...
+2020-05-27 11:42:18,239 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Waiting for coverage client connection in port [50327]...
+2020-05-27 11:42:27,097 [main] INFO  org.mule.munit.remote.container.SuiteRunDispatcher - Suite test-suite.xml will not be deployed: Suite was filtered from running
+2020-05-27 11:42:27,139 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage client connection received from localhost - true
+2020-05-27 11:42:27,143 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage client connection received from localhost - true
+2020-05-27 11:42:27,146 [pool-4-thread-1] INFO  org.mule.munit.remote.coverage.CoverageManager - accumulating covered locations
+2020-05-27 11:42:27,149 [pool-5-thread-1] INFO  org.mule.munit.remote.coverage.CoverageManager - accumulating covered locations
+2020-05-27 11:42:29,509 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Shutting down coverage server
+2020-05-27 11:42:29,510 [pool-3-thread-1] ERROR org.mule.munit.plugins.coverage.server.CoverageServer - Failed to start Coverage Server in port 50327
+2020-05-27 11:42:29,510 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Calculating application coverage
+2020-05-27 11:42:29,521 [main] INFO  org.mule.munit.remote.RemoteRunner - Done
+2020-05-27 11:45:52,061 [main] INFO  org.mule.munit.remote.RemoteRunner - Run Started
+2020-05-27 11:45:52,114 [main] INFO  org.mule.munit.remote.notifiers.SocketNotifier - Connected to localhost on port 57793
+2020-05-27 11:45:52,547 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: com.mulesoft.mule.distributions:mule-runtime-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:45:53,793 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: org.mule.distributions:mule-module-embedded-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:45:53,965 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: com.mulesoft.mule.distributions:mule-runtime-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:45:57,583 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Starting coverage server
+2020-05-27 11:45:57,583 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage Server starting...
+2020-05-27 11:45:57,584 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Waiting for coverage client connection in port [50243]...
+2020-05-27 11:46:06,420 [main] INFO  org.mule.munit.remote.container.SuiteRunDispatcher - Suite test-suite.xml will not be deployed: Suite was filtered from running
+2020-05-27 11:46:06,464 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage client connection received from localhost - true
+2020-05-27 11:46:06,468 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage client connection received from localhost - true
+2020-05-27 11:46:06,471 [pool-4-thread-1] INFO  org.mule.munit.remote.coverage.CoverageManager - accumulating covered locations
+2020-05-27 11:46:06,474 [pool-5-thread-1] INFO  org.mule.munit.remote.coverage.CoverageManager - accumulating covered locations
+2020-05-27 11:46:08,924 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Shutting down coverage server
+2020-05-27 11:46:08,924 [pool-3-thread-1] ERROR org.mule.munit.plugins.coverage.server.CoverageServer - Failed to start Coverage Server in port 50243
+2020-05-27 11:46:08,924 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Calculating application coverage
+2020-05-27 11:46:08,937 [main] INFO  org.mule.munit.remote.RemoteRunner - Done
+2020-05-27 11:46:45,497 [main] INFO  org.mule.munit.remote.RemoteRunner - Run Started
+2020-05-27 11:46:45,549 [main] INFO  org.mule.munit.remote.notifiers.SocketNotifier - Connected to localhost on port 57804
+2020-05-27 11:46:46,000 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: com.mulesoft.mule.distributions:mule-runtime-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:46:47,276 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: org.mule.distributions:mule-module-embedded-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:46:47,459 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: com.mulesoft.mule.distributions:mule-runtime-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:46:51,051 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Starting coverage server
+2020-05-27 11:46:51,052 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage Server starting...
+2020-05-27 11:46:51,052 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Waiting for coverage client connection in port [50295]...
+2020-05-27 11:47:00,768 [main] INFO  org.mule.munit.remote.container.SuiteRunDispatcher - Suite test-suite.xml will not be deployed: Suite was filtered from running
+2020-05-27 11:47:00,821 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage client connection received from localhost - true
+2020-05-27 11:47:00,826 [pool-4-thread-1] INFO  org.mule.munit.remote.coverage.CoverageManager - accumulating covered locations
+2020-05-27 11:47:00,828 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage client connection received from localhost - true
+2020-05-27 11:47:00,834 [pool-5-thread-1] INFO  org.mule.munit.remote.coverage.CoverageManager - accumulating covered locations
+2020-05-27 11:47:02,912 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Shutting down coverage server
+2020-05-27 11:47:02,913 [pool-3-thread-1] ERROR org.mule.munit.plugins.coverage.server.CoverageServer - Failed to start Coverage Server in port 50295
+2020-05-27 11:47:02,913 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Calculating application coverage
+2020-05-27 11:47:02,927 [main] INFO  org.mule.munit.remote.RemoteRunner - Done
+2020-05-27 11:49:46,321 [main] INFO  org.mule.munit.remote.RemoteRunner - Run Started
+2020-05-27 11:49:46,375 [main] INFO  org.mule.munit.remote.notifiers.SocketNotifier - Connected to localhost on port 58028
+2020-05-27 11:49:46,780 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: com.mulesoft.mule.distributions:mule-runtime-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:49:47,989 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: org.mule.distributions:mule-module-embedded-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:49:48,166 [main] INFO  org.mule.maven.client.internal.AetherMavenClient - About to fetch required dependencies for artifact: com.mulesoft.mule.distributions:mule-runtime-impl-bom:pom:4.3.0. This may take a while...
+2020-05-27 11:49:51,751 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Starting coverage server
+2020-05-27 11:49:51,751 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage Server starting...
+2020-05-27 11:49:51,752 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Waiting for coverage client connection in port [50128]...
+2020-05-27 11:50:00,214 [main] INFO  org.mule.munit.remote.container.SuiteRunDispatcher - Suite test-suite.xml will not be deployed: Suite was filtered from running
+2020-05-27 11:50:00,254 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage client connection received from localhost - true
+2020-05-27 11:50:00,258 [pool-3-thread-1] INFO  org.mule.munit.plugins.coverage.server.CoverageServer - Coverage client connection received from localhost - true
+2020-05-27 11:50:00,259 [pool-4-thread-1] INFO  org.mule.munit.remote.coverage.CoverageManager - accumulating covered locations
+2020-05-27 11:50:00,263 [pool-5-thread-1] INFO  org.mule.munit.remote.coverage.CoverageManager - accumulating covered locations
+2020-05-27 11:50:02,612 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Shutting down coverage server
+2020-05-27 11:50:02,612 [pool-3-thread-1] ERROR org.mule.munit.plugins.coverage.server.CoverageServer - Failed to start Coverage Server in port 50128
+2020-05-27 11:50:02,613 [main] INFO  org.mule.munit.remote.coverage.CoverageManager - Calculating application coverage
+2020-05-27 11:50:02,625 [main] INFO  org.mule.munit.remote.RemoteRunner - Done

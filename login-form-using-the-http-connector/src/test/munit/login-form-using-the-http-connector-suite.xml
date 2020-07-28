@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="login-form-using-the-http-connector-suite.xml" />
+	<munit:test name="DoLoginFlow-successfull" doc:id="5c657555-05a9-432f-a892-5d80f1b9ed9d" >
+		<munit:behavior >
+			<munit:set-event doc:name="Set Input" doc:id="58e2c839-2e3d-497a-aee4-f8a240e9e184" >
+				<munit:payload value="#[output application/x-www-form-urlencoded --- readUrl('classpath://DoLoginFlowsuccessfull/set-event_payload1.dwl')]" encoding="UTF-8" mediaType="application/x-www-form-urlencoded" />
+				<munit:attributes value="#[readUrl('classpath://DoLoginFlowsuccessfull/set-event_attributes1.dwl')]" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to DoLoginFlow" doc:id="f8f6eab7-dc9d-4efc-806e-88b962ba7df9" name="DoLoginFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="733dd286-8dbe-4aea-84cf-59db673a6f52" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import DoLoginFlowsuccessfull::assert_expression_payload1
+---
+assert_expression_payload1::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify Successful login" doc:id="762de0c9-93eb-4ef8-ba55-27006d1432fe" processor="parse-template" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="ffd20f28-1e7e-4511-aa4a-6ff0cb334e39" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+
+</mule>
