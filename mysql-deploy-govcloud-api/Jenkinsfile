@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {  
-    AWS_RDS_DB = credentials('AWS_RDS_PERS') 
+    AWS_RDS_PERS = credentials('AWS_RDS_PERS') 
   }
   
   tools{
@@ -17,12 +17,9 @@ pipeline {
       // add Connected App Client Id and Client Secret to the Jenkins credentials and 
       //   pass the values as parameters to the deploy.sh to make it more reusable
       //   GC_CA GovCloud_ConnectedApp
-      environment {  
-        GC_CA_CREDENTIALS = credentials('GC_CA_CREDENTIALS') 
-      }environment {  
-        AWS_RDS_PERS = credentials('AWS_RDS_PERS') 
-      }
+      
       steps {
+        environment {  GC_CA_CREDENTIALS = credentials('GC_CA_CREDENTIALS')  }
         //sh '. ./deploy.sh'
        sh 'bash ./mysql-deploy-govcloud-api/govCloudDeploy.sh ${GC_CA_CREDENTIALS_USR} ${GC_CA_CREDENTIALS_PSW} mysqlaws1.cafcf8elhrnd.us-east-1.rds.amazonaws.com 3306 ${AWS_RDS_PERS_USR} ${AWS_RDS_PERS_PSW} MySQLAWS1'
       }
