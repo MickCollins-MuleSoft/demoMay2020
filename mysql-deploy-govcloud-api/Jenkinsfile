@@ -19,7 +19,14 @@ pipeline {
       //   GC_CA GovCloud_ConnectedApp
       
       steps {
-        environment {  GC_CA_CREDENTIALS = credentials('GC_CA_CREDENTIALS')  }
+        
+        withCredentials([[
+          $class: 'UsernamePasswordMultiBinding',
+          credentialsId: 'GC_CA_CREDENTIALS',
+          usernameVariable: 'GC_CA_CREDENTIALS_USR',
+          passwordVariable: 'GC_CA_CREDENTIALS_PSW',
+         ]]) 
+
         //sh '. ./deploy.sh'
        sh 'bash ./mysql-deploy-govcloud-api/govCloudDeploy.sh ${GC_CA_CREDENTIALS_USR} ${GC_CA_CREDENTIALS_PSW} mysqlaws1.cafcf8elhrnd.us-east-1.rds.amazonaws.com 3306 ${AWS_RDS_PERS_USR} ${AWS_RDS_PERS_PSW} MySQLAWS1'
       }
