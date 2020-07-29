@@ -12,7 +12,7 @@ accessToken=$(curl -sk https://gov.anypoint.mulesoft.com/accounts/api/v2/oauth2/
 	\"client_id\" : \"$client_id\", 
 	\"client_secret\": \"$client_secret\", 
 	\"grant_type\" : \"client_credentials\"
-}" | jq --raw-output .access_token)
+}" | /usr/local/bin/jq --raw-output .access_token)
 
 echo "Access Token $accessToken"
 
