@@ -1,0 +1,25 @@
+#%RAML 1.0
+version: 1.0
+#baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/66ba3f97-249b-4fd9-995d-f47c17597546/ # 
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/1e90f89a-d46c-44b9-8999-3e551b60f13a/api/ # baseUri: http://mysql-people-api.us-e2.cloudhub.io/api/
+title: mySQL-people-API
+description: Retrieve people data from MySQL
+mediaType:
+  - application/json
+types:
+  personType: !include exchange_modules/23ef7729-6eae-4c31-ad56-a330265fa538/persontype/1.0.4/persontype.raml
+/people:
+  get:
+    responses:
+      "200":
+        description: Retrieve all people
+        body:
+          type: personType[]
+          example: !include exchange_modules/23ef7729-6eae-4c31-ad56-a330265fa538/persontypeexamplecollection/1.0.3/persontypeexamplecollection.raml
+
+  put:
+    responses:
+      "200":
+        description: Update the stuff table - 1 record only
+        body:
+          type: personType
