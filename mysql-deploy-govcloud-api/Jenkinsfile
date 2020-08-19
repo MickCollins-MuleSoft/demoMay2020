@@ -1,6 +1,7 @@
 pipeline {
   agent any
 
+  //get AWS MySQL database username and password from Jenkins Credentials
   environment {  
     AWS_RDS_PERS = credentials('AWS_RDS_PERS') 
   }
@@ -10,7 +11,7 @@ pipeline {
     }
   stages {
     //---------------------------------------------------
-    //Deploy to GovCloud, MC
+    //Deploy to GovCloud
     //---------------------------------------------------
     stage('Deploy Government Cloud') {
       //environment {  MYSQL_CREDENTIALS = credentials('AWS_RDS_PERS')
@@ -19,7 +20,7 @@ pipeline {
       //   GC_CA GovCloud_ConnectedApp
       
       steps {
-        
+        //get GovCloud Connected App Client_Id and Client_Secret from Jenkins Credentials
         withCredentials([[
           $class: 'UsernamePasswordMultiBinding',
           credentialsId: 'GC_CA_CREDENTIALS',
