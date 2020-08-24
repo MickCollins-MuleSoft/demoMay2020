@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>mysql-deploy-govcloud-821b-api</artifactId>
+	<artifactId>mysql-deploy-govcloud-824a-api</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>mule-application</packaging>
 
-	<name>mysql-deploy-govcloud-821b-api</name>
+	<name>mysql-deploy-govcloud-824a-api</name>
 
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
