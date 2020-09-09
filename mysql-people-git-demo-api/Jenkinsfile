@@ -13,10 +13,10 @@ pipeline {
     //Deploy to Cloudhub, MC
     //---------------------------------------------------
     stage('Deploy CloudHub') {
-      environment {  MYSQL_CREDENTIALS = credentials('AWS_RDS_PERS')
+      environment {  MYSQL_CREDENTIALS = credentials('PS_Team_MySQL')
       }  
       steps {
-        sh '/usr/local/bin/mvn -f mysql-people-git-demo-api/pom.xml clean package deploy -Dmule.username=${ANYPOINT_CREDENTIALS_USR} -Dmule.password=${ANYPOINT_CREDENTIALS_PSW} -Dmysql.host=mysqlaws1.cafcf8elhrnd.us-east-1.rds.amazonaws.com -Dmysql.port=3306 -Dmysql.user=${MYSQL_CREDENTIALS_USR} -Dmysql.password=${MYSQL_CREDENTIALS_PSW} -Dmysql.database=MySQLAWS1 -DmuleDeploy'
+        sh '/usr/local/bin/mvn -f mysql-people-git-demo-api/pom.xml clean package deploy -Dmule.username=${ANYPOINT_CREDENTIALS_USR} -Dmule.password=${ANYPOINT_CREDENTIALS_PSW} -Dmysql.host=52.55.148.195 -Dmysql.port=3306 -Dmysql.user=${MYSQL_CREDENTIALS_USR} -Dmysql.password=${MYSQL_CREDENTIALS_PSW} -Dmysql.database=People_MySQL -DmuleDeploy'
       }
       //comment lines begin with double slash, keep this as a reminder
     }
