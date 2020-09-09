@@ -40,7 +40,7 @@
                       <muleVersion>4.3.0</muleVersion> 
                       <username>${mule.username}</username> 
                       <password>${mule.password}</password>
-                      <applicationName>mysql-people-api-51120</applicationName>
+                      <applicationName>mysql-people-api-091020</applicationName>
                       <environment>Sandbox</environment> 
                       <region>us-east-2</region>
                       <workerType>MICRO</workerType>
