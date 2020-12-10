@@ -28,7 +28,7 @@ pipeline {
           passwordVariable: 'GC_CA_CREDENTIALS_PSW', ]]) 
          {
            //sh '. ./deploy.sh'
-           sh 'bash ./mysql-deploy-govcloud-api/govCloudDeploy.sh ${GC_CA_CREDENTIALS_USR} ${GC_CA_CREDENTIALS_PSW} 52.55.148.195 3306 ${AWS_RDS_PERS_USR} ${AWS_RDS_PERS_PSW} MySQLAWS1'
+           sh 'bash ./mysql-deploy-govcloud-api/govCloudDeploy.sh ${GC_CA_CREDENTIALS_USR} ${GC_CA_CREDENTIALS_PSW} 52.55.148.195 3306 ${AWS_RDS_PERS_USR} ${AWS_RDS_PERS_PSW} People_MySQL'
          }  
       }
       //comment lines begin with double slash, keep this as a reminder
