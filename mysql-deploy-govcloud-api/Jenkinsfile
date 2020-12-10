@@ -3,7 +3,7 @@ pipeline {
 
   //get AWS MySQL database username and password from Jenkins Credentials
   environment {  
-    AWS_RDS_PERS = credentials('AWS_RDS_PERS') 
+    AWS_RDS_PERS = credentials('PS_Team_MySQL') 
   }
   
   tools{
@@ -28,7 +28,7 @@ pipeline {
           passwordVariable: 'GC_CA_CREDENTIALS_PSW', ]]) 
          {
            //sh '. ./deploy.sh'
-           sh 'bash ./mysql-deploy-govcloud-api/govCloudDeploy.sh ${GC_CA_CREDENTIALS_USR} ${GC_CA_CREDENTIALS_PSW} mysqlaws1.cafcf8elhrnd.us-east-1.rds.amazonaws.com 3306 ${AWS_RDS_PERS_USR} ${AWS_RDS_PERS_PSW} MySQLAWS1'
+           sh 'bash ./mysql-deploy-govcloud-api/govCloudDeploy.sh ${GC_CA_CREDENTIALS_USR} ${GC_CA_CREDENTIALS_PSW} 52.55.148.195 3306 ${AWS_RDS_PERS_USR} ${AWS_RDS_PERS_PSW} MySQLAWS1'
          }  
       }
       //comment lines begin with double slash, keep this as a reminder
