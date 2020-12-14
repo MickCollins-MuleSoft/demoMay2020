@@ -15,7 +15,7 @@ pipeline {
     //---------------------------------------------------
     stage('Test') {
         steps {
-            sh '/usr/local/bin/mvn -f mysql-deploy-gc-api/pom.xml clean test'
+            sh '/usr/local/bin/mvn -f mysql-deploy-govcloud-api/pom.xml clean test'
         }
         post {
              success {
