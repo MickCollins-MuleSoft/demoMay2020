@@ -14,12 +14,16 @@ pipeline {
     //Automated Testing with MUnit
     //---------------------------------------------------
     stage('Test') {
-        steps{
+        steps {
             sh '/usr/local/bin/mvn -f mysql-deploy-gc-api/pom.xml clean test'
         
         post {
-            success {      echo "...MUnit completed successfully" } 
-            unsuccessful { echo "^^^^^ MUnit Automated test FAILED ^^^^^" }
+            success {
+                echo "...MUnit completed successfully" 
+            } 
+            unsuccessful { 
+                echo "^^^^^ MUnit Automated test FAILED ^^^^^" 
+            }
         }
         
     }
