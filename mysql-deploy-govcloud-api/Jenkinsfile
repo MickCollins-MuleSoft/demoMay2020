@@ -11,6 +11,19 @@ pipeline {
     }
   stages {
     //---------------------------------------------------
+    //Automated Testing with MUnit
+    //---------------------------------------------------
+    stage('Test') {
+        steps{
+            sh '/usr/local/bin/mvn -f mysql-deploy-gc-api/pom.xml clean test 
+        
+        post {
+            success {      echo "...MUnit completed successfully" } 
+            unsuccessful { echo "^^^^^ MUnit Automated test FAILED ^^^^^" }
+        }
+        
+    }
+    //---------------------------------------------------
     //Deploy to GovCloud
     //---------------------------------------------------
     stage('Deploy Government Cloud') {
