@@ -3,7 +3,7 @@ pipeline {
 
   //get AWS MySQL database username and password from Jenkins Credentials
   environment {  
-    AWS_RDS_PERS = credentials('PS_Team_MySQL') 
+    AWS_RDS_PERS = credentials('AWS_RDS_PERS') 
   }
   
   tools{
