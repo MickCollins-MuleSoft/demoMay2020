@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>mysql-deploy-govcloud-05-20-21-a-api</artifactId>
+	<artifactId>mysql-deploy-govcloud-05-20-21-b-api</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>mule-application</packaging>
 
@@ -38,7 +38,7 @@
                     </sharedLibraries>
                     <cloudHubDeployment> 
                       <uri>https://gov.anypoint.mulesoft.com</uri>
-                      <muleVersion>4.2.1</muleVersion> 
+                      <muleVersion>4.3.0</muleVersion> 
                       <authToken>${authorizationToken}</authToken> 
                       <applicationName>mysql-deploy-govcloud-api</applicationName>
                       <businessGroupId>69515741-dbd3-492c-86b6-d112b84687d8</businessGroupId>
