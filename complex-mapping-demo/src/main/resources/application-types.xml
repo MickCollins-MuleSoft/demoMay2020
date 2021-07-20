@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="poXSD" format="xml">
+      <types:shape format="xml-schema" element="PurchaseOrder" location="api/examples/po.xsd"/>
+    </types:type>
+    <types:type name="poXML" format="xml">
+      <types:example format="xml" element="PurchaseOrder" location="api/examples/poExample.xml"/>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#804c8b18-c629-43b5-8c2f-847e7e153275">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="poXML"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

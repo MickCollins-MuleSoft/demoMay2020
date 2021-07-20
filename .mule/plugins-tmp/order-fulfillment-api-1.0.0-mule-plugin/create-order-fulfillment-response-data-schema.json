@@ -1,0 +1,1 @@
+{"type":"object","properties":{"order_id":{"type":"number"},"username":{"type":"string"}},"definitions":{},"$schema":"http://json-schema.org/draft-04/schema#"}

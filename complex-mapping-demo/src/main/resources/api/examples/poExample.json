@@ -1,0 +1,42 @@
+{
+    "purchaseOrderNumber":"99503",
+    "orderDate":"1999-10-20",
+    "deliveryNotes":"Leave in shed by driveway",
+    "billingAddress":
+      {
+        "name":"Tai Yee",
+        "street":"8 Oak Avenue",
+        "city":"Old Town",
+        "region":"PA",
+        "country":"USA",
+        "postalCode":"95819"
+      },
+    "shippingAddress":
+      {
+        "name":"Ellen Adams",
+        "street":"123 Maple Street",
+        "city":"Beltsville",
+        "region":"MD",
+        "country":"USA",
+        "postalCode":"20705"
+      },
+    "items":[
+      {
+        "productName": "Lawnmower",
+        "quantity":1,
+        "unitPrice":189.99,
+        "currency":"USD",
+        "partNumber":"872-AA",
+        "shipDate":"2020-09-09",
+        "comments":"Electric"
+      },
+      {
+        "productName":"Baby Monitor",
+        "quantity":2,
+        "unitPrice":39.99,
+        "currency": "USD",
+        "partNumber": "322-SS",
+        "shipDate": "2020-09-09"
+      }
+    ]
+}

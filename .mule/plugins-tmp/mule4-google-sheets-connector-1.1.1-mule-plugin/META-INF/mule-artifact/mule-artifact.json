@@ -1,0 +1,31 @@
+{
+  "extensionModelLoaderDescriptor": {
+    "id": "java",
+    "attributes": {
+      "type": "com.mulesoft.connector.google.sheets.internal.extension.GoogleSheetsConnectorMule4Connector",
+      "version": "1.1.1"
+    }
+  },
+  "name": "Google Sheets",
+  "requiredProduct": "MULE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "privilegedExportedPackages": [],
+      "privilegedArtifactIds": [],
+      "exportedPackages": [
+        "com.mulesoft.connectivity.sheets.rest.commons.api.request",
+        "com.mulesoft.connector.google.sheets.api.metadata",
+        "com.mulesoft.connectivity.sheets.rest.commons.api.configuration",
+        "com.mulesoft.connectivity.sheets.rest.commons.api.proxy",
+        "com.mulesoft.connectivity.sheets.rest.commons.api.operation"
+      ],
+      "exportedResources": []
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  },
+  "minMuleVersion": "4.2.1"
+}

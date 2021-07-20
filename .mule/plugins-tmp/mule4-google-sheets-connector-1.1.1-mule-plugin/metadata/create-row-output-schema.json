@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "Create Row",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "spreadsheetId": "1GVlaZliYZKkHht-DO2e1kxfFkb5AgsCE0Lt1nH-RN6c",
+      "tableRange": "Sheet1!A1:D3",
+      "updates": {
+        "spreadsheetId": "1GVlaZliYZKkHht-DO2e1kxfFkb5AgsCE0Lt1nH-RN6c",
+        "updatedRange": "Sheet1!A4:B4",
+        "updatedRows": 1,
+        "updatedColumns": 2,
+        "updatedCells": 2
+      }
+    }
+  ],
+  "required": [
+    "spreadsheetId",
+    "tableRange",
+    "updates"
+  ],
+  "properties": {
+    "spreadsheetId": {
+      "$id": "#/properties/spreadsheetId",
+      "type": "string",
+      "title": "The spreadsheetId schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "1GVlaZliYZKkHht-DO2e1kxfFkb5AgsCE0Lt1nH-RN6c"
+      ]
+    },
+    "tableRange": {
+      "$id": "#/properties/tableRange",
+      "type": "string",
+      "title": "The tableRange schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "Sheet1!A1:D3"
+      ]
+    },
+    "updates": {
+      "$id": "#/properties/updates",
+      "type": "object",
+      "title": "The updates schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "spreadsheetId": "1GVlaZliYZKkHht-DO2e1kxfFkb5AgsCE0Lt1nH-RN6c",
+          "updatedRange": "Sheet1!A4:B4",
+          "updatedRows": 1,
+          "updatedColumns": 2,
+          "updatedCells": 2
+        }
+      ],
+      "required": [
+        "spreadsheetId",
+        "updatedRange",
+        "updatedRows",
+        "updatedColumns",
+        "updatedCells"
+      ],
+      "properties": {
+        "spreadsheetId": {
+          "$id": "#/properties/updates/properties/spreadsheetId",
+          "type": "string",
+          "title": "The spreadsheetId schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "1GVlaZliYZKkHht-DO2e1kxfFkb5AgsCE0Lt1nH-RN6c"
+          ]
+        },
+        "updatedRange": {
+          "$id": "#/properties/updates/properties/updatedRange",
+          "type": "string",
+          "title": "The updatedRange schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "Sheet1!A4:B4"
+          ]
+        },
+        "updatedRows": {
+          "$id": "#/properties/updates/properties/updatedRows",
+          "type": "integer",
+          "title": "The updatedRows schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            1
+          ]
+        },
+        "updatedColumns": {
+          "$id": "#/properties/updates/properties/updatedColumns",
+          "type": "integer",
+          "title": "The updatedColumns schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            2
+          ]
+        },
+        "updatedCells": {
+          "$id": "#/properties/updates/properties/updatedCells",
+          "type": "integer",
+          "title": "The updatedCells schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            2
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

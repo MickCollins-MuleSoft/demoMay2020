@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "Update Row",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "spreadsheetId": "1F7q3h_WLvMROE0mYnGqjcKVatx9dzFQqMfygX2JSjIw",
+      "updatedRange": "Sheet1!B2:C2",
+      "updatedRows": 1,
+      "updatedColumns": 2,
+      "updatedCells": 2
+    }
+  ],
+  "required": [
+    "spreadsheetId",
+    "updatedRange",
+    "updatedRows",
+    "updatedColumns",
+    "updatedCells"
+  ],
+  "properties": {
+    "spreadsheetId": {
+      "$id": "#/properties/spreadsheetId",
+      "type": "string",
+      "title": "The spreadsheetId schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "1F7q3h_WLvMROE0mYnGqjcKVatx9dzFQqMfygX2JSjIw"
+      ]
+    },
+    "updatedRange": {
+      "$id": "#/properties/updatedRange",
+      "type": "string",
+      "title": "The updatedRange schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "Sheet1!B2:C2"
+      ]
+    },
+    "updatedRows": {
+      "$id": "#/properties/updatedRows",
+      "type": "integer",
+      "title": "The updatedRows schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": 0,
+      "examples": [
+        1
+      ]
+    },
+    "updatedColumns": {
+      "$id": "#/properties/updatedColumns",
+      "type": "integer",
+      "title": "The updatedColumns schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": 0,
+      "examples": [
+        2
+      ]
+    },
+    "updatedCells": {
+      "$id": "#/properties/updatedCells",
+      "type": "integer",
+      "title": "The updatedCells schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": 0,
+      "examples": [
+        2
+      ]
+    }
+  },
+  "additionalProperties": true
+}

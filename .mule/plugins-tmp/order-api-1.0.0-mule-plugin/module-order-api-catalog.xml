@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogs xmlns="http://www.mulesoft.org/schema/mule/types" >
+
+    
+        
+                    <catalog name="get-orders-response-type" format="application/json">
+                <schema format="application/json+schema" location="./get-orders-response-data-schema.json" />
+            </catalog>
+        
+                                                                                                                                                                        
+    
+                    <catalog name="create-order-request-type" format="application/json">
+                <schema format="application/json+schema" location="./create-order-request-data-schema.json" />
+            </catalog>
+        
+                    <catalog name="create-order-response-type" format="application/json">
+                <schema format="application/json+schema" location="./create-order-response-data-schema.json" />
+            </catalog>
+        
+                                                                                        
+    
+        
+                    <catalog name="get-order-by-id-response-type" format="application/json">
+                <schema format="application/json+schema" location="./get-order-by-id-response-data-schema.json" />
+            </catalog>
+        
+                                                                                                            
+    
+                    <catalog name="update-order-by-id-request-type" format="application/json">
+                <schema format="application/json+schema" location="./update-order-by-id-request-data-schema.json" />
+            </catalog>
+        
+        
+                                                                                                            
+    
+        
+        
+                                                                                                            
+    
+</catalogs>

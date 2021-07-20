@@ -1,0 +1,651 @@
+{
+  "minMuleVersion": "4.0.0",
+  "extensionModel": {
+    "types": [],
+    "messageSources": [],
+    "functions": [],
+    "configurations": [{
+      "externalLibraryModels": [],
+      "operations": [{
+        "displayModel": {},
+        "kind": "operation",
+        "executionType": "CPU_LITE",
+        "description": "",
+        "modelProperties": {},
+        "parameterGroupModels": [
+          {
+            "name": "General",
+            "description": "",
+            "modelProperties": {},
+            "parameters": [
+              {
+                "displayModel": {},
+                "role": "PRIMARY_CONTENT",
+                "defaultValue": "#[payload]",
+                "description": "",
+                "modelProperties": {},
+                "type": {
+                  "format": "json",
+                  "type": "Object",
+                  "fields": [
+                    {
+                      "model": {"type": "Number"},
+                      "key": {"name": "price"}
+                    },
+                    {
+                      "model": {"type": "String"},
+                      "key": {"name": "customer_id"}
+                    },
+                    {
+                      "model": {"type": "String"},
+                      "key": {"name": "status"}
+                    },
+                    {
+                      "model": {
+                        "item": {
+                          "type": "Object",
+                          "fields": [
+                            {
+                              "model": {"type": "Number"},
+                              "key": {"name": "quantity"}
+                            },
+                            {
+                              "model": {"type": "Number"},
+                              "key": {"name": "id"}
+                            },
+                            {
+                              "model": {"type": "String"},
+                              "key": {"name": "productName"}
+                            }
+                          ],
+                          "open": {"type": "Any"}
+                        },
+                        "type": "Array"
+                      },
+                      "key": {"name": "products"}
+                    }
+                  ],
+                  "open": {"type": "Any"}
+                },
+                "required": false,
+                "expressionSupport": "SUPPORTED",
+                "hasDynamicType": false,
+                "isConfigOverride": false,
+                "dslConfiguration": {
+                  "allowTopLevelDefinition": false,
+                  "allowsInlineDefinition": true,
+                  "allowsReferences": false
+                },
+                "name": "create-order-fulfillment-request-data",
+                "layoutModel": {
+                  "password": false,
+                  "tabName": "General",
+                  "query": false,
+                  "text": false
+                },
+                "allowedStereotypeModels": [],
+                "isComponentId": false
+              },
+              {
+                "displayModel": {},
+                "role": "BEHAVIOUR",
+                "description": "Anypoint Platfrom application id",
+                "modelProperties": {},
+                "type": {
+                  "format": "java",
+                  "type": "String"
+                },
+                "required": false,
+                "expressionSupport": "SUPPORTED",
+                "hasDynamicType": false,
+                "isConfigOverride": false,
+                "dslConfiguration": {
+                  "allowTopLevelDefinition": false,
+                  "allowsInlineDefinition": false,
+                  "allowsReferences": false
+                },
+                "name": "client-id",
+                "layoutModel": {
+                  "password": false,
+                  "tabName": "General",
+                  "query": false,
+                  "text": false
+                },
+                "allowedStereotypeModels": [],
+                "isComponentId": false
+              },
+              {
+                "displayModel": {},
+                "role": "BEHAVIOUR",
+                "description": "Anypoint Platfrom application secret",
+                "modelProperties": {},
+                "type": {
+                  "format": "java",
+                  "type": "String"
+                },
+                "required": false,
+                "expressionSupport": "SUPPORTED",
+                "hasDynamicType": false,
+                "isConfigOverride": false,
+                "dslConfiguration": {
+                  "allowTopLevelDefinition": false,
+                  "allowsInlineDefinition": false,
+                  "allowsReferences": false
+                },
+                "name": "client-secret",
+                "layoutModel": {
+                  "password": false,
+                  "tabName": "General",
+                  "query": false,
+                  "text": false
+                },
+                "allowedStereotypeModels": [],
+                "isComponentId": false
+              },
+              {
+                "displayModel": {},
+                "role": "BEHAVIOUR",
+                "defaultValue": "application/json",
+                "description": "This is the format for what the API sends",
+                "modelProperties": {},
+                "type": {
+                  "format": "java",
+                  "type": "String"
+                },
+                "required": false,
+                "expressionSupport": "SUPPORTED",
+                "hasDynamicType": false,
+                "isConfigOverride": false,
+                "dslConfiguration": {
+                  "allowTopLevelDefinition": false,
+                  "allowsInlineDefinition": false,
+                  "allowsReferences": false
+                },
+                "name": "content-type",
+                "layoutModel": {
+                  "password": false,
+                  "tabName": "General",
+                  "query": false,
+                  "text": false
+                },
+                "allowedStereotypeModels": [],
+                "isComponentId": false
+              },
+              {
+                "displayModel": {},
+                "role": "BEHAVIOUR",
+                "defaultValue": "application/json",
+                "description": "This is the format for what the API receives",
+                "modelProperties": {},
+                "type": {
+                  "format": "java",
+                  "type": "String"
+                },
+                "required": false,
+                "expressionSupport": "SUPPORTED",
+                "hasDynamicType": false,
+                "isConfigOverride": false,
+                "dslConfiguration": {
+                  "allowTopLevelDefinition": false,
+                  "allowsInlineDefinition": false,
+                  "allowsReferences": false
+                },
+                "name": "accept",
+                "layoutModel": {
+                  "password": false,
+                  "tabName": "General",
+                  "query": false,
+                  "text": false
+                },
+                "allowedStereotypeModels": [],
+                "isComponentId": false
+              },
+              {
+                "role": "BEHAVIOUR",
+                "hasDynamicType": false,
+                "isConfigOverride": false,
+                "dslConfiguration": {
+                  "allowTopLevelDefinition": false,
+                  "allowsInlineDefinition": false,
+                  "allowsReferences": true
+                },
+                "name": "config-ref",
+                "description": "The name of the configuration to be used to execute this component",
+                "modelProperties": {},
+                "allowedStereotypeModels": [{
+                  "parent": {
+                    "namespace": "MULE",
+                    "type": "MODULE_CONFIG"
+                  },
+                  "namespace": "ORDERFULFILLMENT-API",
+                  "type": "CONFIG"
+                }],
+                "type": {
+                  "format": "java",
+                  "annotations": {"typeId": "org.mule.runtime.extension.api.runtime.config.ConfigurationProvider"},
+                  "type": "Object",
+                  "fields": []
+                },
+                "required": false,
+                "isComponentId": false,
+                "expressionSupport": "NOT_SUPPORTED"
+              }
+            ],
+            "exclusiveParametersModels": [],
+            "showInDsl": false
+          },
+          {
+            "name": "Output",
+            "description": "",
+            "modelProperties": {},
+            "parameters": [
+              {
+                "displayModel": {"displayName": "Target Variable"},
+                "role": "BEHAVIOUR",
+                "description": "The name of a variable on which the operation's output will be placed",
+                "modelProperties": {},
+                "type": {
+                  "format": "java",
+                  "type": "String"
+                },
+                "required": false,
+                "expressionSupport": "NOT_SUPPORTED",
+                "hasDynamicType": false,
+                "isConfigOverride": false,
+                "dslConfiguration": {
+                  "allowTopLevelDefinition": false,
+                  "allowsInlineDefinition": false,
+                  "allowsReferences": false
+                },
+                "name": "target",
+                "layoutModel": {
+                  "password": false,
+                  "tabName": "Advanced",
+                  "query": false,
+                  "text": false
+                },
+                "allowedStereotypeModels": [],
+                "isComponentId": false
+              },
+              {
+                "displayModel": {"displayName": "Target Value"},
+                "role": "BEHAVIOUR",
+                "defaultValue": "#[payload]",
+                "description": "An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable",
+                "modelProperties": {},
+                "type": {
+                  "format": "java",
+                  "type": "String"
+                },
+                "required": false,
+                "expressionSupport": "REQUIRED",
+                "hasDynamicType": false,
+                "isConfigOverride": false,
+                "dslConfiguration": {
+                  "allowTopLevelDefinition": false,
+                  "allowsInlineDefinition": false,
+                  "allowsReferences": false
+                },
+                "name": "targetValue",
+                "layoutModel": {
+                  "password": false,
+                  "tabName": "Advanced",
+                  "query": false,
+                  "text": false
+                },
+                "allowedStereotypeModels": [],
+                "isComponentId": false
+              }
+            ],
+            "exclusiveParametersModels": [],
+            "showInDsl": false
+          }
+        ],
+        "output": {
+          "hasDynamicType": false,
+          "description": "",
+          "modelProperties": {},
+          "type": {
+            "format": "json",
+            "type": "Object",
+            "fields": [
+              {
+                "model": {"type": "Number"},
+                "key": {"name": "order_id"}
+              },
+              {
+                "model": {"type": "String"},
+                "key": {"name": "username"}
+              }
+            ],
+            "open": {"type": "Any"}
+          }
+        },
+        "outputAttributes": {
+          "hasDynamicType": false,
+          "description": "",
+          "modelProperties": {},
+          "type": {
+            "format": "java",
+            "type": "Void"
+          }
+        },
+        "supportsStreaming": false,
+        "requiresConnection": false,
+        "blocking": true,
+        "name": "create-order-fulfillment",
+        "stereotype": {
+          "parent": {
+            "parent": {
+              "namespace": "MULE",
+              "type": "PROCESSOR"
+            },
+            "namespace": "ORDERFULFILLMENT-API",
+            "type": "PROCESSOR"
+          },
+          "namespace": "ORDERFULFILLMENT-API",
+          "type": "CREATE-ORDER-FULFILLMENT"
+        },
+        "nestedComponents": [],
+        "transactional": false,
+        "notifications": [],
+        "errors": []
+      }],
+      "messageSources": [],
+      "name": "config",
+      "description": "",
+      "modelProperties": {},
+      "stereotype": {
+        "parent": {
+          "namespace": "MULE",
+          "type": "MODULE_CONFIG"
+        },
+        "namespace": "ORDERFULFILLMENT-API",
+        "type": "CONFIG"
+      },
+      "parameterGroupModels": [{
+        "name": "General",
+        "description": "",
+        "modelProperties": {},
+        "parameters": [
+          {
+            "displayModel": {
+              "summary": "Host for consuming API",
+              "displayName": "host"
+            },
+            "role": "BEHAVIOUR",
+            "defaultValue": "localhost",
+            "description": "",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "String"
+            },
+            "required": false,
+            "expressionSupport": "SUPPORTED",
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": false,
+              "allowsReferences": false
+            },
+            "name": "property_host",
+            "layoutModel": {
+              "password": false,
+              "tabName": "General",
+              "query": false,
+              "text": false
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          },
+          {
+            "displayModel": {
+              "summary": "Port for consuming API",
+              "displayName": "port"
+            },
+            "role": "BEHAVIOUR",
+            "defaultValue": "8081",
+            "description": "",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "String"
+            },
+            "required": false,
+            "expressionSupport": "SUPPORTED",
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": false,
+              "allowsReferences": false
+            },
+            "name": "property_port",
+            "layoutModel": {
+              "password": false,
+              "tabName": "General",
+              "query": false,
+              "text": false
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          },
+          {
+            "displayModel": {
+              "summary": "Basepath for consuming API",
+              "displayName": "basePath"
+            },
+            "role": "BEHAVIOUR",
+            "defaultValue": "/api",
+            "description": "",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "String"
+            },
+            "required": false,
+            "expressionSupport": "SUPPORTED",
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": false,
+              "allowsReferences": false
+            },
+            "name": "property_basePath",
+            "layoutModel": {
+              "password": false,
+              "tabName": "General",
+              "query": false,
+              "text": false
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          },
+          {
+            "displayModel": {
+              "summary": "Protocol for consuming API",
+              "displayName": "protocol"
+            },
+            "role": "BEHAVIOUR",
+            "defaultValue": "HTTP",
+            "description": "",
+            "modelProperties": {},
+            "type": {
+              "format": "java",
+              "type": "String"
+            },
+            "required": false,
+            "expressionSupport": "SUPPORTED",
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": false,
+              "allowsReferences": false
+            },
+            "name": "property_protocol",
+            "layoutModel": {
+              "password": false,
+              "tabName": "General",
+              "query": false,
+              "text": false
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          },
+          {
+            "role": "BEHAVIOUR",
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": false,
+              "allowsReferences": false
+            },
+            "name": "name",
+            "description": "The identifier of this element used to reference it in other components",
+            "modelProperties": {},
+            "allowedStereotypeModels": [],
+            "type": {
+              "format": "java",
+              "type": "String"
+            },
+            "required": true,
+            "isComponentId": true,
+            "expressionSupport": "NOT_SUPPORTED"
+          },
+          {
+            "role": "BEHAVIOUR",
+            "description": "Configures the minimum amount of time that a dynamic configuration instance can remain idle before the runtime considers it eligible for expiration. This does not mean that the platform will expire the instance at the exact moment that it becomes eligible. The runtime will actually purge the instances when it sees it fit.",
+            "modelProperties": {
+              "org.mule.runtime.extension.api.property.InfrastructureParameterModelProperty": {"sequence": 4},
+              "org.mule.runtime.extension.api.property.QNameModelProperty": {"value": {
+                "localPart": "expiration-policy",
+                "prefix": "mule",
+                "namespaceURI": "http://www.mulesoft.org/schema/mule/core"
+              }}
+            },
+            "type": {
+              "format": "java",
+              "annotations": {
+                "typeDsl": {
+                  "allowTopLevelDefinition": false,
+                  "allowInlineDefinition": true
+                },
+                "description": {"value": "Configures the minimum amount of time that a dynamic configuration instance can remain idle before the runtime considers it eligible for expiration. This does not mean that the platform will expire the instance at the exact moment that it becomes eligible. The runtime will actually purge the instances when it sees it fit."},
+                "typeId": "org.mule.runtime.extension.api.runtime.ExpirationPolicy"
+              },
+              "type": "Object",
+              "fields": [
+                {
+                  "annotations": {
+                    "description": {"value": "A scalar time value for the maximum amount of time a dynamic configuration instance should be allowed to be idle before it's considered eligible for expiration"},
+                    "expressionSupport": {"value": "NOT_SUPPORTED"}
+                  },
+                  "model": {
+                    "annotations": {
+                      "default": "5",
+                      "classInformation": {
+                        "implementedInterfaces": ["java.lang.Comparable"],
+                        "parent": "java.lang.Number",
+                        "classname": "java.lang.Long",
+                        "hasDefaultConstructor": false,
+                        "isInstantiable": false,
+                        "isFinal": true,
+                        "genericTypes": [],
+                        "isInterface": false,
+                        "isAbstract": false,
+                        "isMap": false
+                      },
+                      "int": {}
+                    },
+                    "type": "Number"
+                  },
+                  "key": {"name": "maxIdleTime"}
+                },
+                {
+                  "annotations": {
+                    "description": {"value": "A time unit that qualifies the maxIdleTime attribute"},
+                    "expressionSupport": {"value": "NOT_SUPPORTED"}
+                  },
+                  "model": {
+                    "annotations": {
+                      "default": "MINUTES",
+                      "enum": {
+                        "values": [
+                          "NANOSECONDS",
+                          "MICROSECONDS",
+                          "MILLISECONDS",
+                          "SECONDS",
+                          "MINUTES",
+                          "HOURS",
+                          "DAYS"
+                        ],
+                        "type": "[Ljava.lang.String;"
+                      }
+                    },
+                    "type": "String"
+                  },
+                  "key": {"name": "timeUnit"}
+                }
+              ]
+            },
+            "required": false,
+            "expressionSupport": "NOT_SUPPORTED",
+            "hasDynamicType": false,
+            "isConfigOverride": false,
+            "dslConfiguration": {
+              "allowTopLevelDefinition": false,
+              "allowsInlineDefinition": true,
+              "allowsReferences": false
+            },
+            "name": "expirationPolicy",
+            "layoutModel": {
+              "password": false,
+              "tabName": "Advanced",
+              "query": false,
+              "text": false
+            },
+            "allowedStereotypeModels": [],
+            "isComponentId": false
+          }
+        ],
+        "exclusiveParametersModels": [],
+        "showInDsl": false
+      }],
+      "connectionProviders": []
+    }],
+    "externalLibraries": [],
+    "description": "",
+    "resources": [],
+    "subTypes": [],
+    "modelProperties": {"org.mule.runtime.extension.api.property.XmlExtensionModelProperty": {"namespacesDependencies": [
+      "http://www.mulesoft.org/schema/mule/documentation",
+      "http://www.mulesoft.org/schema/mule/http",
+      "http://www.w3.org/2001/XMLSchema-instance",
+      "http://www.mulesoft.org/schema/mule/core"
+    ]}},
+    "constructs": [],
+    "connectionProviders": [],
+    "version": "4.0.0",
+    "privilegedArtifacts": [],
+    "importedTypes": [],
+    "xmlDsl": {
+      "schemaVersion": "4.0.0",
+      "prefix": "orderfulfillment-api",
+      "schemaLocation": "http://www.mulesoft.org/schema/mule/orderfulfillment-api/current/mule-orderfulfillment-api.xsd",
+      "namespace": "http://www.mulesoft.org/schema/mule/orderfulfillment-api",
+      "xsdFileName": "mule-orderfulfillment-api.xsd"
+    },
+    "operations": [],
+    "vendor": "MuleSoft",
+    "name": "Order fulfillment API",
+    "privilegedPackages": [],
+    "category": "COMMUNITY",
+    "notifications": [],
+    "errors": []
+  }
+}

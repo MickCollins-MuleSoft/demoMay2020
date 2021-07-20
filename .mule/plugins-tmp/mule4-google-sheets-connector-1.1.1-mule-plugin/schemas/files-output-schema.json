@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "#/definitions/schema",
+  "definitions": {"schema": {
+    "additionalProperties": true,
+    "type": "object",
+    "properties": {
+      "kind": {"type": "string"},
+      "nextPageToken": {"type": "string"},
+      "files": {
+        "type": "array",
+        "items": {
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "kind",
+            "id",
+            "name",
+            "mimeType"
+          ],
+          "properties": {
+            "kind": {"type": "string"},
+            "name": {"type": "string"},
+            "id": {"type": "string"},
+            "mimeType": {"type": "string"}
+          }
+        }
+      },
+      "incompleteSearch": {"type": "boolean"}
+    }
+  }}
+}

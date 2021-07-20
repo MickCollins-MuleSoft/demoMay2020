@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "#/definitions/schema",
+  "definitions": {"schema": {
+    "additionalProperties": true,
+    "type": "object",
+    "required": ["sheets"],
+    "properties": {"sheets": {
+      "type": "array",
+      "items": [{
+        "additionalProperties": true,
+        "type": "object",
+        "required": ["properties"],
+        "properties": {"properties": {
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "sheetId",
+            "title",
+            "index",
+            "sheetType",
+            "gridProperties"
+          ],
+          "properties": {
+            "sheetType": {"type": "string"},
+            "sheetId": {"type": "integer"},
+            "index": {"type": "integer"},
+            "title": {"type": "string"},
+            "gridProperties": {
+              "additionalProperties": true,
+              "type": "object",
+              "required": [
+                "rowCount",
+                "columnCount"
+              ],
+              "properties": {
+                "rowCount": {"type": "integer"},
+                "columnCount": {"type": "integer"}
+              }
+            }
+          }
+        }}
+      }]
+    }}
+  }}
+}

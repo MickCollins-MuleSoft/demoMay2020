@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "New Spreadsheet",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "id": "1GVlaZliYZKkHht-DO2e1kxfFkb5AgsCE0Lt1nH-RN6c",
+      "name": "UntitledSpreadSheet"
+    }
+  ],
+  "required": [
+    "id",
+    "title"
+  ],
+  "properties": {
+    "id": {
+      "$id": "#/properties/id",
+      "type": "string",
+      "title": "Spreadsheet ID",
+      "description": "ID of the spreadsheet.",
+      "default": "",
+      "examples": [
+        "1GVlaZliYZKkHht-DO2e1kxfFkb5AgsCE0Lt1nH-RN6c"
+      ]
+    },
+    "title": {
+      "$id": "#/properties/title",
+      "type": "string",
+      "title": "Title",
+      "description": "Name of the spreadsheet.",
+      "default": "",
+      "examples": [
+        "UntitledSpreadSheet"
+      ]
+    },
+    "ownerName": {
+      "$id": "#/properties/ownerName",
+      "type": "string",
+      "title": "Owner's name",
+      "description": "Name of the creator.",
+      "default": "",
+      "examples": [
+        "John Smith"
+      ]
+    },
+    "ownerEmail": {
+      "$id": "#/properties/ownerEmail",
+      "type": "string",
+      "title": "Owner's email",
+      "description": "Email of the creator.",
+      "default": "",
+      "examples": [
+        "johnsmith@gmail.com"
+      ]
+    },
+    "createdDateTime": {
+      "$id": "#/properties/createdDateTime",
+      "type": "string",
+      "title": "Created datetime",
+      "description": "When spreadsheet was created.",
+      "default": "",
+      "examples": [
+      ]
+    },
+    "embedLink": {
+      "$id": "#/properties/embedLink",
+      "type": "string",
+      "title": "Embed link",
+      "description": "Link to the spreadsheet.",
+      "default": "",
+      "examples": [
+      ]
+    }
+  },
+  "additionalProperties": true
+}

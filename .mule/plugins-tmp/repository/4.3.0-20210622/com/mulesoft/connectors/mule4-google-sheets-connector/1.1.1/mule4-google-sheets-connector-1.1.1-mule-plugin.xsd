@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:mule="http://www.mulesoft.org/schema/mule/core" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.mulesoft.org/schema/mule/google-sheets" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace"></xs:import>
+  <xs:import namespace="http://www.springframework.org/schema/beans" schemaLocation="http://www.springframework.org/schema/beans/spring-beans.xsd"></xs:import>
+  <xs:import namespace="http://www.mulesoft.org/schema/mule/core" schemaLocation="http://www.mulesoft.org/schema/mule/core/current/mule.xsd"></xs:import>
+  <xs:import namespace="http://www.mulesoft.org/schema/mule/tls" schemaLocation="http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd"></xs:import>
+  <xs:complexType name="com.mulesoft.connectivity.sheets.rest.commons.api.proxy.HttpProxyConfig">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractExtensionType">
+        <xs:attribute type="xs:string" use="required" name="host"></xs:attribute>
+        <xs:attribute type="mule:substitutableInt" use="required" name="port"></xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="username"></xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="password"></xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="nonProxyHosts"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:mule="http://www.mulesoft.org/schema/mule/core" substitutionGroup="mule:abstract-shared-extension" abstract="true" name="abstract-proxy"></xs:element>
+  <xs:element xmlns:google-sheets="http://www.mulesoft.org/schema/mule/google-sheets" substitutionGroup="google-sheets:abstract-proxy" name="proxy">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="google-sheets:com.mulesoft.connectivity.sheets.rest.commons.api.proxy.HttpProxyConfig">
+          <xs:attribute type="xs:string" use="optional" name="name"></xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element xmlns:mule="http://www.mulesoft.org/schema/mule/core" substitutionGroup="mule:abstract-shared-extension" name="config">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="mule:abstractExtensionType">
+          <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element minOccurs="1" maxOccurs="1" ref="mule:abstractConnectionProvider"></xs:element>
+            <xs:element minOccurs="0" maxOccurs="1" ref="mule:expiration-policy"></xs:element>
+          </xs:sequence>
+          <xs:attribute type="mule:expressionInt" use="optional" default="1" name="responseTimeout"></xs:attribute>
+          <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="java.util.concurrent.TimeUnitEnumType" use="optional" default="MINUTES" name="responseTimeoutUnit"></xs:attribute>
+          <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="com.mulesoft.connectivity.sheets.rest.commons.api.configuration.StreamingTypeEnumType" use="optional" default="AUTO" name="streamingType"></xs:attribute>
+          <xs:attribute type="xs:string" use="required" name="name">
+            <xs:annotation>
+              <xs:documentation>The identifier of this element used to reference it in other components</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element xmlns:mule="http://www.mulesoft.org/schema/mule/core" substitutionGroup="mule:abstractConnectionProvider" name="oauth-2-0-connection">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="mule:abstractConnectionProviderType">
+          <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element minOccurs="0" maxOccurs="1" ref="mule:reconnection"></xs:element>
+            <xs:element xmlns:tls="http://www.mulesoft.org/schema/mule/tls" minOccurs="0" maxOccurs="1" ref="tls:context"></xs:element>
+            <xs:element minOccurs="0" maxOccurs="1" name="default-headers">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element xmlns:google-sheets="http://www.mulesoft.org/schema/mule/google-sheets" minOccurs="0" maxOccurs="unbounded" ref="google-sheets:abstract-default-header"></xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" maxOccurs="1" name="default-query-params">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element xmlns:google-sheets="http://www.mulesoft.org/schema/mule/google-sheets" minOccurs="0" maxOccurs="unbounded" ref="google-sheets:abstract-default-query-param"></xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" maxOccurs="1" name="proxy-config">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension xmlns:google-sheets="http://www.mulesoft.org/schema/mule/google-sheets" base="google-sheets:com.mulesoft.connectivity.sheets.rest.commons.api.proxy.HttpProxyConfig"></xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="1" maxOccurs="1" name="oauth-authorization-code">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="mule:abstractExtensionType">
+                    <xs:sequence></xs:sequence>
+                    <xs:attribute type="xs:string" use="required" name="consumerKey">
+                      <xs:annotation>
+                        <xs:documentation>The OAuth consumerKey as registered with the service provider</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute type="xs:string" use="required" name="consumerSecret">
+                      <xs:annotation>
+                        <xs:documentation>The OAuth consumerSecret as registered with the service provider</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute type="xs:string" use="optional" default="https://accounts.google.com/o/oauth2/auth" name="authorizationUrl">
+                      <xs:annotation>
+                        <xs:documentation>The service provider's authorization endpoint URL</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute type="xs:string" use="optional" default="https://oauth2.googleapis.com/token" name="accessTokenUrl">
+                      <xs:annotation>
+                        <xs:documentation>The service provider's accessToken endpoint URL</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute type="xs:string" use="optional" default="https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.metadata.readonly" name="scopes">
+                      <xs:annotation>
+                        <xs:documentation>The OAuth scopes to be requested during the dance. If not provided, it will default to those in the annotation</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute type="mule:expressionString" use="optional" name="resourceOwnerId">
+                      <xs:annotation>
+                        <xs:documentation>The resourceOwnerId which each component should use if it doesn't reference otherwise.</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute type="xs:string" use="optional" name="before">
+                      <xs:annotation>
+                        <xs:documentation>The name of a flow to be executed right before starting the OAuth dance</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute type="xs:string" use="optional" name="after">
+                      <xs:annotation>
+                        <xs:documentation>The name of a flow to be executed right after an accessToken has been received</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="1" maxOccurs="1" name="oauth-callback-config">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="mule:abstractExtensionType">
+                    <xs:sequence></xs:sequence>
+                    <xs:attribute type="xs:string" use="required" name="listenerConfig">
+                      <xs:annotation>
+                        <xs:documentation>A reference to a &lt;http:listener-config /&gt; to be used in order to create the listener that will catch the access token callback endpoint.</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute type="xs:string" use="required" name="callbackPath">
+                      <xs:annotation>
+                        <xs:documentation>The path of the access token callback endpoint</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute type="xs:string" use="required" name="authorizePath">
+                      <xs:annotation>
+                        <xs:documentation>The path of the local http endpoint which triggers the OAuth dance</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute type="xs:string" use="optional" name="externalCallbackUrl">
+                      <xs:annotation>
+                        <xs:documentation>If the callback endpoint is behind a proxy or should be accessed through a non direct URL, use this parameter to tell the OAuth provider the URL it should use to access the callback</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" maxOccurs="1" name="oauth-store-config">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="mule:abstractExtensionType">
+                    <xs:sequence></xs:sequence>
+                    <xs:attribute type="xs:string" use="optional" name="objectStore">
+                      <xs:annotation>
+                        <xs:documentation>A reference to the object store that should be used to store each resource owner id's data. If not specified, runtime will automatically provision the default one.</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute type="xs:string" use="optional" name="tlsContext"></xs:attribute>
+          <xs:attribute type="mule:substitutableName" use="optional" name="defaultHeaders"></xs:attribute>
+          <xs:attribute type="mule:substitutableName" use="optional" name="defaultQueryParams"></xs:attribute>
+          <xs:attribute type="mule:substitutableInt" use="optional" default="30" name="connectionTimeout"></xs:attribute>
+          <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="java.util.concurrent.TimeUnitEnumType" use="optional" default="SECONDS" name="connectionTimeoutUnit"></xs:attribute>
+          <xs:attribute type="mule:substitutableBoolean" use="optional" default="true" name="usePersistentConnections"></xs:attribute>
+          <xs:attribute type="mule:substitutableInt" use="optional" default="-1" name="maxConnections"></xs:attribute>
+          <xs:attribute type="mule:substitutableInt" use="optional" default="30" name="connectionIdleTimeout"></xs:attribute>
+          <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="java.util.concurrent.TimeUnitEnumType" use="optional" default="SECONDS" name="connectionIdleTimeoutUnit"></xs:attribute>
+          <xs:attribute type="xs:string" use="optional" name="proxyConfig"></xs:attribute>
+          <xs:attribute type="mule:substitutableBoolean" use="optional" default="false" name="streamResponse"></xs:attribute>
+          <xs:attribute type="mule:substitutableInt" use="optional" default="-1" name="responseBufferSize"></xs:attribute>
+          <xs:attribute type="xs:string" use="optional" default="offline" name="access_type"></xs:attribute>
+          <xs:attribute type="xs:string" use="optional" default="consent" name="prompt"></xs:attribute>
+          <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="org.mule.runtime.http.api.HttpConstants.ProtocolEnumType" use="optional" default="HTTP" name="protocol"></xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="com.mulesoft.connectivity.sheets.rest.commons.api.request.RequestHeader">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractExtensionType">
+        <xs:attribute type="xs:string" use="required" name="key"></xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="value"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:google-sheets="http://www.mulesoft.org/schema/mule/google-sheets" type="google-sheets:com.mulesoft.connectivity.sheets.rest.commons.api.request.RequestHeader" abstract="true" name="abstract-default-header"></xs:element>
+  <xs:element xmlns:google-sheets="http://www.mulesoft.org/schema/mule/google-sheets" substitutionGroup="google-sheets:abstract-default-header" name="default-header">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="google-sheets:com.mulesoft.connectivity.sheets.rest.commons.api.request.RequestHeader"></xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="com.mulesoft.connectivity.sheets.rest.commons.api.request.QueryParam">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractExtensionType">
+        <xs:attribute type="xs:string" use="required" name="key"></xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="value"></xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:google-sheets="http://www.mulesoft.org/schema/mule/google-sheets" type="google-sheets:com.mulesoft.connectivity.sheets.rest.commons.api.request.QueryParam" abstract="true" name="abstract-default-query-param"></xs:element>
+  <xs:element xmlns:google-sheets="http://www.mulesoft.org/schema/mule/google-sheets" substitutionGroup="google-sheets:abstract-default-query-param" name="default-query-param">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="google-sheets:com.mulesoft.connectivity.sheets.rest.commons.api.request.QueryParam"></xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/google-sheets" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="New-row-listenerType" substitutionGroup="mule:abstract-message-source" name="new-row-listener"></xs:element>
+  <xs:complexType name="New-row-listenerType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageSourceType">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-redelivery-policy"></xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-byte-streaming-strategy"></xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-reconnection-strategy"></xs:element>
+          <xs:element minOccurs="1" maxOccurs="1" ref="mule:scheduling-strategy"></xs:element>
+        </xs:sequence>
+        <xs:attribute type="mule:substitutableInt" use="optional" default="30" name="responseTimeout"></xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="java.util.concurrent.TimeUnitEnumType" use="optional" default="SECONDS" name="responseTimeoutTimeUnit"></xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>The name of the configuration to be used to execute this component</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:substitutableBoolean" use="optional" name="primaryNodeOnly">
+          <xs:annotation>
+            <xs:documentation>Whether this source should only be executed on the primary node when runnning in Cluster</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="spreadsheetId">
+          <xs:annotation>
+            <xs:documentation>The ID of the spreadsheet.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="worksheetName">
+          <xs:annotation>
+            <xs:documentation>The name of the worksheet.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/google-sheets" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="New-spreadsheet-listenerType" substitutionGroup="mule:abstract-message-source" name="new-spreadsheet-listener"></xs:element>
+  <xs:complexType name="New-spreadsheet-listenerType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageSourceType">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-redelivery-policy"></xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-byte-streaming-strategy"></xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-reconnection-strategy"></xs:element>
+          <xs:element minOccurs="1" maxOccurs="1" ref="mule:scheduling-strategy"></xs:element>
+        </xs:sequence>
+        <xs:attribute type="mule:substitutableInt" use="optional" default="30" name="responseTimeout"></xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="java.util.concurrent.TimeUnitEnumType" use="optional" default="SECONDS" name="responseTimeoutTimeUnit"></xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>The name of the configuration to be used to execute this component</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:substitutableBoolean" use="optional" name="primaryNodeOnly">
+          <xs:annotation>
+            <xs:documentation>Whether this source should only be executed on the primary node when runnning in Cluster</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/google-sheets" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="Updated-row-listenerType" substitutionGroup="mule:abstract-message-source" name="updated-row-listener"></xs:element>
+  <xs:complexType name="Updated-row-listenerType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractMessageSourceType">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-redelivery-policy"></xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-byte-streaming-strategy"></xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-reconnection-strategy"></xs:element>
+          <xs:element minOccurs="1" maxOccurs="1" ref="mule:scheduling-strategy"></xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" name="monitored-columns">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="monitored-column">
+                  <xs:complexType>
+                    <xs:attribute type="mule:expressionString" use="required" name="value"></xs:attribute>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute type="mule:substitutableInt" use="optional" default="30" name="responseTimeout"></xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="java.util.concurrent.TimeUnitEnumType" use="optional" default="SECONDS" name="responseTimeoutTimeUnit"></xs:attribute>
+        <xs:attribute type="mule:substitutableBoolean" use="optional" default="false" name="includeNewRows"></xs:attribute>
+        <xs:attribute type="mule:substitutableName" use="optional" name="monitoredColumns"></xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>The name of the configuration to be used to execute this component</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:substitutableBoolean" use="optional" name="primaryNodeOnly">
+          <xs:annotation>
+            <xs:documentation>Whether this source should only be executed on the primary node when runnning in Cluster</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="spreadsheetId">
+          <xs:annotation>
+            <xs:documentation>The ID of the spreadsheet.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="worksheetName">
+          <xs:annotation>
+            <xs:documentation>The name of the worksheet.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/google-sheets" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="CreateSpreadsheetsValuesRangeappendBySpreadsheetIdType" substitutionGroup="mule:abstract-operator" name="create-spreadsheets-values-rangeappend-by-spreadsheet-id">
+    <xs:annotation>
+      <xs:documentation>Append Spreadsheets Values This operation makes an HTTP POST request to the /spreadsheets/{spreadsheetId}/values/{range}:append endpoint</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="CreateSpreadsheetsValuesRangeappendBySpreadsheetIdType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractOperatorType">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-byte-streaming-strategy"></xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-reconnection-strategy"></xs:element>
+          <xs:element type="xs:string" minOccurs="0" maxOccurs="1" name="spreadsheets-values-rangeappend-content">
+            <xs:annotation>
+              <xs:documentation>the content to use</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element type="xs:string" minOccurs="0" maxOccurs="1" name="custom-query-params"></xs:element>
+          <xs:element type="xs:string" minOccurs="0" maxOccurs="1" name="custom-headers"></xs:element>
+        </xs:sequence>
+        <xs:attribute type="mule:expressionString" use="required" name="spreadsheetId">
+          <xs:annotation>
+            <xs:documentation>Spreadsheet Id</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="required" name="range">
+          <xs:annotation>
+            <xs:documentation>range</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="com.mulesoft.connector.google.sheets.api.metadata.ValueInputOptionEnumEnumType" use="optional" default="USER_ENTERED" name="valueInputOption">
+          <xs:annotation>
+            <xs:documentation>Value Input Option</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="com.mulesoft.connector.google.sheets.api.metadata.InsertDataOptionEnumEnumType" use="optional" name="insertDataOption">
+          <xs:annotation>
+            <xs:documentation>Insert Data Option</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="optional" default="application/json" name="contentType">
+          <xs:annotation>
+            <xs:documentation>Content Type</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>The name of the configuration to be used to execute this component</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionInt" use="optional" name="responseTimeout"></xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="java.util.concurrent.TimeUnitEnumType" use="optional" name="responseTimeoutUnit"></xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="com.mulesoft.connectivity.sheets.rest.commons.api.configuration.StreamingTypeEnumType" use="optional" name="streamingType"></xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="target">
+          <xs:annotation>
+            <xs:documentation>The name of a variable on which the operation's output will be placed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="optional" default="#[payload]" name="targetValue">
+          <xs:annotation>
+            <xs:documentation>An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/google-sheets" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="GetFilesType" substitutionGroup="mule:abstract-operator" name="get-files">
+    <xs:annotation>
+      <xs:documentation>The endpoint lists user's drive files. This operation makes an HTTP GET request to the /files endpoint</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="GetFilesType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractOperatorType">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-object-streaming-strategy"></xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-reconnection-strategy"></xs:element>
+          <xs:element type="xs:string" minOccurs="0" maxOccurs="1" name="custom-query-params"></xs:element>
+          <xs:element type="xs:string" minOccurs="0" maxOccurs="1" name="custom-headers"></xs:element>
+        </xs:sequence>
+        <xs:attribute type="mule:expressionString" use="optional" default="100" name="pageSize">
+          <xs:annotation>
+            <xs:documentation>Page Size</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="optional" name="q">
+          <xs:annotation>
+            <xs:documentation>Query</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="optional" name="fields">
+          <xs:annotation>
+            <xs:documentation>Fields</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="optional" name="orderBy">
+          <xs:annotation>
+            <xs:documentation>Order By</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="optional" name="outputMimeType">
+          <xs:annotation>
+            <xs:documentation>The mime type of the payload that this operation outputs.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>The name of the configuration to be used to execute this component</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionInt" use="optional" name="responseTimeout"></xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="java.util.concurrent.TimeUnitEnumType" use="optional" name="responseTimeoutUnit"></xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="com.mulesoft.connectivity.sheets.rest.commons.api.configuration.StreamingTypeEnumType" use="optional" name="streamingType"></xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="target">
+          <xs:annotation>
+            <xs:documentation>The name of a variable on which the operation's output will be placed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="optional" default="#[payload]" name="targetValue">
+          <xs:annotation>
+            <xs:documentation>An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/google-sheets" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="GetSpreadsheetsBySpreadsheetIdType" substitutionGroup="mule:abstract-operator" name="get-spreadsheets-by-spreadsheet-id">
+    <xs:annotation>
+      <xs:documentation>Get Spreadsheet Properties This operation makes an HTTP GET request to the /spreadsheets/{spreadsheetId} endpoint</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="GetSpreadsheetsBySpreadsheetIdType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractOperatorType">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-byte-streaming-strategy"></xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-reconnection-strategy"></xs:element>
+          <xs:element type="xs:string" minOccurs="0" maxOccurs="1" name="custom-query-params"></xs:element>
+          <xs:element type="xs:string" minOccurs="0" maxOccurs="1" name="custom-headers"></xs:element>
+        </xs:sequence>
+        <xs:attribute type="mule:expressionString" use="required" name="spreadsheetId">
+          <xs:annotation>
+            <xs:documentation>Spreadsheet Id</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="optional" name="fields">
+          <xs:annotation>
+            <xs:documentation>Fields</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="optional" default="application/json" name="contentType">
+          <xs:annotation>
+            <xs:documentation>Content Type</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>The name of the configuration to be used to execute this component</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionInt" use="optional" name="responseTimeout"></xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="java.util.concurrent.TimeUnitEnumType" use="optional" name="responseTimeoutUnit"></xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="com.mulesoft.connectivity.sheets.rest.commons.api.configuration.StreamingTypeEnumType" use="optional" name="streamingType"></xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="target">
+          <xs:annotation>
+            <xs:documentation>The name of a variable on which the operation's output will be placed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="optional" default="#[payload]" name="targetValue">
+          <xs:annotation>
+            <xs:documentation>An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/google-sheets" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="GetSpreadsheetsValuesBySpreadsheetIdRangeType" substitutionGroup="mule:abstract-operator" name="get-spreadsheets-values-by-spreadsheet-id-range">
+    <xs:annotation>
+      <xs:documentation>Get Spreadsheets Values This operation makes an HTTP GET request to the /spreadsheets/{spreadsheetId}/values/{range} endpoint</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="GetSpreadsheetsValuesBySpreadsheetIdRangeType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractOperatorType">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-byte-streaming-strategy"></xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-reconnection-strategy"></xs:element>
+          <xs:element type="xs:string" minOccurs="0" maxOccurs="1" name="custom-query-params"></xs:element>
+          <xs:element type="xs:string" minOccurs="0" maxOccurs="1" name="custom-headers"></xs:element>
+        </xs:sequence>
+        <xs:attribute type="mule:expressionString" use="required" name="spreadsheetId">
+          <xs:annotation>
+            <xs:documentation>Spreadsheet Id</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="required" name="range">
+          <xs:annotation>
+            <xs:documentation>range</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>The name of the configuration to be used to execute this component</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionInt" use="optional" name="responseTimeout"></xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="java.util.concurrent.TimeUnitEnumType" use="optional" name="responseTimeoutUnit"></xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="com.mulesoft.connectivity.sheets.rest.commons.api.configuration.StreamingTypeEnumType" use="optional" name="streamingType"></xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="target">
+          <xs:annotation>
+            <xs:documentation>The name of a variable on which the operation's output will be placed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="optional" default="#[payload]" name="targetValue">
+          <xs:annotation>
+            <xs:documentation>An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/google-sheets" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="UnauthorizeType" substitutionGroup="mule:abstract-operator" name="unauthorize">
+    <xs:annotation>
+      <xs:documentation>Deletes all the access token information of a given resource owner id so that it's impossible to execute any operation for that user without doing the authorization dance again</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="UnauthorizeType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractOperatorType">
+        <xs:sequence minOccurs="0" maxOccurs="1"></xs:sequence>
+        <xs:attribute type="mule:expressionString" use="optional" name="resourceOwnerId">
+          <xs:annotation>
+            <xs:documentation>The id of the resource owner which access should be invalidated</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>The name of the configuration to be used to execute this component</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns="http://www.mulesoft.org/schema/mule/google-sheets" xmlns:mule="http://www.mulesoft.org/schema/mule/core" type="UpdateSpreadsheetsValuesBySpreadsheetIdRangeType" substitutionGroup="mule:abstract-operator" name="update-spreadsheets-values-by-spreadsheet-id-range">
+    <xs:annotation>
+      <xs:documentation>Update Spreadsheets Values This operation makes an HTTP PUT request to the /spreadsheets/{spreadsheetId}/values/{range} endpoint</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="UpdateSpreadsheetsValuesBySpreadsheetIdRangeType">
+    <xs:complexContent>
+      <xs:extension xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:abstractOperatorType">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-byte-streaming-strategy"></xs:element>
+          <xs:element minOccurs="0" maxOccurs="1" ref="mule:abstract-reconnection-strategy"></xs:element>
+          <xs:element type="xs:string" minOccurs="0" maxOccurs="1" name="spreadsheets-values-rangeappend-content">
+            <xs:annotation>
+              <xs:documentation>the content to use</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element type="xs:string" minOccurs="0" maxOccurs="1" name="custom-query-params"></xs:element>
+          <xs:element type="xs:string" minOccurs="0" maxOccurs="1" name="custom-headers"></xs:element>
+        </xs:sequence>
+        <xs:attribute type="mule:expressionString" use="required" name="spreadsheetId">
+          <xs:annotation>
+            <xs:documentation>Spreadsheet Id</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="required" name="range">
+          <xs:annotation>
+            <xs:documentation>range</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="com.mulesoft.connector.google.sheets.api.metadata.ValueInputOptionEnumEnumType" use="optional" default="USER_ENTERED" name="valueInputOption">
+          <xs:annotation>
+            <xs:documentation>Value Input Option</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="optional" default="application/json" name="contentType">
+          <xs:annotation>
+            <xs:documentation>Content Type</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="xs:string" use="required" name="config-ref">
+          <xs:annotation>
+            <xs:documentation>The name of the configuration to be used to execute this component</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionInt" use="optional" name="responseTimeout"></xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="java.util.concurrent.TimeUnitEnumType" use="optional" name="responseTimeoutUnit"></xs:attribute>
+        <xs:attribute xmlns="http://www.mulesoft.org/schema/mule/google-sheets" type="com.mulesoft.connectivity.sheets.rest.commons.api.configuration.StreamingTypeEnumType" use="optional" name="streamingType"></xs:attribute>
+        <xs:attribute type="xs:string" use="optional" name="target">
+          <xs:annotation>
+            <xs:documentation>The name of a variable on which the operation's output will be placed</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute type="mule:expressionString" use="optional" default="#[payload]" name="targetValue">
+          <xs:annotation>
+            <xs:documentation>An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="java.util.concurrent.TimeUnitEnumType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="NANOSECONDS"></xs:enumeration>
+          <xs:enumeration value="MICROSECONDS"></xs:enumeration>
+          <xs:enumeration value="MILLISECONDS"></xs:enumeration>
+          <xs:enumeration value="SECONDS"></xs:enumeration>
+          <xs:enumeration value="MINUTES"></xs:enumeration>
+          <xs:enumeration value="HOURS"></xs:enumeration>
+          <xs:enumeration value="DAYS"></xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="com.mulesoft.connectivity.sheets.rest.commons.api.configuration.StreamingTypeEnumType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="AUTO"></xs:enumeration>
+          <xs:enumeration value="ALWAYS"></xs:enumeration>
+          <xs:enumeration value="NEVER"></xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="org.mule.runtime.http.api.HttpConstants.ProtocolEnumType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="HTTP"></xs:enumeration>
+          <xs:enumeration value="HTTPS"></xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="com.mulesoft.connector.google.sheets.api.metadata.ValueInputOptionEnumEnumType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="USER_ENTERED"></xs:enumeration>
+          <xs:enumeration value="INPUT_VALUE_OPTION_UNSPECIFIED"></xs:enumeration>
+          <xs:enumeration value="RAW"></xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="com.mulesoft.connector.google.sheets.api.metadata.InsertDataOptionEnumEnumType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="INSERT_ROWS"></xs:enumeration>
+          <xs:enumeration value="OVERWRITE"></xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+</xs:schema>

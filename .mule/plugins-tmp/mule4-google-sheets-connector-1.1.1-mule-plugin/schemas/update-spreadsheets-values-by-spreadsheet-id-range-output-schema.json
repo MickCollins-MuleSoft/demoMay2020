@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "#/definitions/schema",
+  "definitions": {"schema": {
+    "description": "The root schema comprises the entire JSON document.",
+    "additionalProperties": true,
+    "type": "object",
+    "title": "Update Row",
+    "required": [
+      "spreadsheetId",
+      "updatedRange",
+      "updatedRows",
+      "updatedColumns",
+      "updatedCells"
+    ],
+    "properties": {
+      "updatedRange": {
+        "default": "",
+        "description": "An explanation about the purpose of this instance.",
+        "type": "string",
+        "title": "The updatedRange schema"
+      },
+      "updatedCells": {
+        "default": 0,
+        "description": "An explanation about the purpose of this instance.",
+        "type": "integer",
+        "title": "The updatedCells schema"
+      },
+      "spreadsheetId": {
+        "default": "",
+        "description": "An explanation about the purpose of this instance.",
+        "type": "string",
+        "title": "The spreadsheetId schema"
+      },
+      "updatedRows": {
+        "default": 0,
+        "description": "An explanation about the purpose of this instance.",
+        "type": "integer",
+        "title": "The updatedRows schema"
+      },
+      "updatedColumns": {
+        "default": 0,
+        "description": "An explanation about the purpose of this instance.",
+        "type": "integer",
+        "title": "The updatedColumns schema"
+      }
+    }
+  }}
+}

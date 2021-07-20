@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension-documentation>
+    <configs>
+        <config name="config">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="responseTimeout">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseTimeoutUnit">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="streamingType">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="name">
+                    <description><![CDATA[The identifier of this element used to reference it in other components]]></description>
+                </parameter>
+                <parameter name="expirationPolicy">
+                    <description><![CDATA[Configures the minimum amount of time that a dynamic configuration instance can remain idle before the runtime considers it eligible for expiration. This does not mean that the platform will expire the instance at the exact moment that it becomes eligible. The runtime will actually purge the instances when it sees it fit.]]></description>
+                </parameter>
+            </parameters>
+        </config>
+    </configs>
+    <connections>
+        <connection name="oauth-2-0">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="defaultHeaders">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="defaultQueryParams">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="connectionTimeout">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="connectionTimeoutUnit">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="usePersistentConnections">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="maxConnections">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="connectionIdleTimeout">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="connectionIdleTimeoutUnit">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="proxyConfig">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="streamResponse">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseBufferSize">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="access_type">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="prompt">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="protocol">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="tlsContext">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="reconnection">
+                    <description><![CDATA[When the application is deployed, a connectivity test is performed on all connectors. If set to true, deployment will fail if the test doesn't pass after exhausting the associated reconnection strategy]]></description>
+                </parameter>
+                <parameter name="consumerKey">
+                    <description><![CDATA[The OAuth consumerKey as registered with the service provider]]></description>
+                </parameter>
+                <parameter name="consumerSecret">
+                    <description><![CDATA[The OAuth consumerSecret as registered with the service provider]]></description>
+                </parameter>
+                <parameter name="authorizationUrl">
+                    <description><![CDATA[The service provider's authorization endpoint URL]]></description>
+                </parameter>
+                <parameter name="accessTokenUrl">
+                    <description><![CDATA[The service provider's accessToken endpoint URL]]></description>
+                </parameter>
+                <parameter name="scopes">
+                    <description><![CDATA[The OAuth scopes to be requested during the dance. If not provided, it will default to those in the annotation]]></description>
+                </parameter>
+                <parameter name="resourceOwnerId">
+                    <description><![CDATA[The resourceOwnerId which each component should use if it doesn't reference otherwise.]]></description>
+                </parameter>
+                <parameter name="before">
+                    <description><![CDATA[The name of a flow to be executed right before starting the OAuth dance]]></description>
+                </parameter>
+                <parameter name="after">
+                    <description><![CDATA[The name of a flow to be executed right after an accessToken has been received]]></description>
+                </parameter>
+                <parameter name="listenerConfig">
+                    <description><![CDATA[A reference to a <http:listener-config /> to be used in order to create the listener that will catch the access token callback endpoint.]]></description>
+                </parameter>
+                <parameter name="callbackPath">
+                    <description><![CDATA[The path of the access token callback endpoint]]></description>
+                </parameter>
+                <parameter name="authorizePath">
+                    <description><![CDATA[The path of the local http endpoint which triggers the OAuth dance]]></description>
+                </parameter>
+                <parameter name="externalCallbackUrl">
+                    <description><![CDATA[If the callback endpoint is behind a proxy or should be accessed through a non direct URL, use this parameter to tell the OAuth provider the URL it should use to access the callback]]></description>
+                </parameter>
+                <parameter name="objectStore">
+                    <description><![CDATA[A reference to the object store that should be used to store each resource owner id's data. If not specified, runtime will automatically provision the default one.]]></description>
+                </parameter>
+            </parameters>
+        </connection>
+    </connections>
+    <extension name="Google Sheets">
+        <description><![CDATA[]]></description>
+        <parameters/>
+    </extension>
+    <operations>
+        <operation name="createSpreadsheetsValuesRangeappendBySpreadsheetId">
+            <description><![CDATA[Append Spreadsheets Values This operation makes an HTTP POST request to the /spreadsheets/{spreadsheetId}/values/{range}:append endpoint]]></description>
+            <parameters>
+                <parameter name="spreadsheetId">
+                    <description><![CDATA[Spreadsheet Id]]></description>
+                </parameter>
+                <parameter name="range">
+                    <description><![CDATA[range]]></description>
+                </parameter>
+                <parameter name="valueInputOption">
+                    <description><![CDATA[Value Input Option]]></description>
+                </parameter>
+                <parameter name="insertDataOption">
+                    <description><![CDATA[Insert Data Option]]></description>
+                </parameter>
+                <parameter name="contentType">
+                    <description><![CDATA[Content Type]]></description>
+                </parameter>
+                <parameter name="spreadsheetsValuesRangeappendContent">
+                    <description><![CDATA[the content to use]]></description>
+                </parameter>
+                <parameter name="config-ref">
+                    <description><![CDATA[The name of the configuration to be used to execute this component]]></description>
+                </parameter>
+                <parameter name="streamingStrategy">
+                    <description><![CDATA[Configure if repeatable streams should be used and their behaviour]]></description>
+                </parameter>
+                <parameter name="customQueryParams">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="customHeaders">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseTimeout">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseTimeoutUnit">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="streamingType">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="target">
+                    <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>
+                </parameter>
+                <parameter name="targetValue">
+                    <description><![CDATA[An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable]]></description>
+                </parameter>
+                <parameter name="reconnectionStrategy">
+                    <description><![CDATA[A retry strategy in case of connectivity errors]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="getFiles">
+            <description><![CDATA[The endpoint lists user's drive files. This operation makes an HTTP GET request to the /files endpoint]]></description>
+            <parameters>
+                <parameter name="pageSize">
+                    <description><![CDATA[Page Size]]></description>
+                </parameter>
+                <parameter name="q">
+                    <description><![CDATA[Query]]></description>
+                </parameter>
+                <parameter name="fields">
+                    <description><![CDATA[Fields]]></description>
+                </parameter>
+                <parameter name="orderBy">
+                    <description><![CDATA[Order By]]></description>
+                </parameter>
+                <parameter name="outputMimeType">
+                    <description><![CDATA[The mime type of the payload that this operation outputs.]]></description>
+                </parameter>
+                <parameter name="config-ref">
+                    <description><![CDATA[The name of the configuration to be used to execute this component]]></description>
+                </parameter>
+                <parameter name="streamingStrategy">
+                    <description><![CDATA[Configure if repeatable streams should be used and their behaviour]]></description>
+                </parameter>
+                <parameter name="customQueryParams">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="customHeaders">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseTimeout">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseTimeoutUnit">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="streamingType">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="target">
+                    <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>
+                </parameter>
+                <parameter name="targetValue">
+                    <description><![CDATA[An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable]]></description>
+                </parameter>
+                <parameter name="reconnectionStrategy">
+                    <description><![CDATA[A retry strategy in case of connectivity errors]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="getSpreadsheetsBySpreadsheetId">
+            <description><![CDATA[Get Spreadsheet Properties This operation makes an HTTP GET request to the /spreadsheets/{spreadsheetId} endpoint]]></description>
+            <parameters>
+                <parameter name="spreadsheetId">
+                    <description><![CDATA[Spreadsheet Id]]></description>
+                </parameter>
+                <parameter name="fields">
+                    <description><![CDATA[Fields]]></description>
+                </parameter>
+                <parameter name="contentType">
+                    <description><![CDATA[Content Type]]></description>
+                </parameter>
+                <parameter name="config-ref">
+                    <description><![CDATA[The name of the configuration to be used to execute this component]]></description>
+                </parameter>
+                <parameter name="streamingStrategy">
+                    <description><![CDATA[Configure if repeatable streams should be used and their behaviour]]></description>
+                </parameter>
+                <parameter name="customQueryParams">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="customHeaders">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseTimeout">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseTimeoutUnit">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="streamingType">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="target">
+                    <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>
+                </parameter>
+                <parameter name="targetValue">
+                    <description><![CDATA[An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable]]></description>
+                </parameter>
+                <parameter name="reconnectionStrategy">
+                    <description><![CDATA[A retry strategy in case of connectivity errors]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="getSpreadsheetsValuesBySpreadsheetIdRange">
+            <description><![CDATA[Get Spreadsheets Values This operation makes an HTTP GET request to the /spreadsheets/{spreadsheetId}/values/{range} endpoint]]></description>
+            <parameters>
+                <parameter name="spreadsheetId">
+                    <description><![CDATA[Spreadsheet Id]]></description>
+                </parameter>
+                <parameter name="range">
+                    <description><![CDATA[range]]></description>
+                </parameter>
+                <parameter name="config-ref">
+                    <description><![CDATA[The name of the configuration to be used to execute this component]]></description>
+                </parameter>
+                <parameter name="streamingStrategy">
+                    <description><![CDATA[Configure if repeatable streams should be used and their behaviour]]></description>
+                </parameter>
+                <parameter name="customQueryParams">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="customHeaders">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseTimeout">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseTimeoutUnit">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="streamingType">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="target">
+                    <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>
+                </parameter>
+                <parameter name="targetValue">
+                    <description><![CDATA[An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable]]></description>
+                </parameter>
+                <parameter name="reconnectionStrategy">
+                    <description><![CDATA[A retry strategy in case of connectivity errors]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="unauthorize">
+            <description><![CDATA[Deletes all the access token information of a given resource owner id so that it's impossible to execute any operation for that user without doing the authorization dance again]]></description>
+            <parameters>
+                <parameter name="resourceOwnerId">
+                    <description><![CDATA[The id of the resource owner which access should be invalidated]]></description>
+                </parameter>
+                <parameter name="config-ref">
+                    <description><![CDATA[The name of the configuration to be used to execute this component]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+        <operation name="updateSpreadsheetsValuesBySpreadsheetIdRange">
+            <description><![CDATA[Update Spreadsheets Values This operation makes an HTTP PUT request to the /spreadsheets/{spreadsheetId}/values/{range} endpoint]]></description>
+            <parameters>
+                <parameter name="spreadsheetId">
+                    <description><![CDATA[Spreadsheet Id]]></description>
+                </parameter>
+                <parameter name="range">
+                    <description><![CDATA[range]]></description>
+                </parameter>
+                <parameter name="valueInputOption">
+                    <description><![CDATA[Value Input Option]]></description>
+                </parameter>
+                <parameter name="contentType">
+                    <description><![CDATA[Content Type]]></description>
+                </parameter>
+                <parameter name="spreadsheetsValuesRangeappendContent">
+                    <description><![CDATA[the content to use]]></description>
+                </parameter>
+                <parameter name="config-ref">
+                    <description><![CDATA[The name of the configuration to be used to execute this component]]></description>
+                </parameter>
+                <parameter name="streamingStrategy">
+                    <description><![CDATA[Configure if repeatable streams should be used and their behaviour]]></description>
+                </parameter>
+                <parameter name="customQueryParams">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="customHeaders">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseTimeout">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseTimeoutUnit">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="streamingType">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="target">
+                    <description><![CDATA[The name of a variable on which the operation's output will be placed]]></description>
+                </parameter>
+                <parameter name="targetValue">
+                    <description><![CDATA[An expression that will be evaluated against the operation's output and the outcome of that expression will be stored in the target variable]]></description>
+                </parameter>
+                <parameter name="reconnectionStrategy">
+                    <description><![CDATA[A retry strategy in case of connectivity errors]]></description>
+                </parameter>
+            </parameters>
+        </operation>
+    </operations>
+    <sources>
+        <source name="new-row-listener">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="responseTimeout">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseTimeoutTimeUnit">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="config-ref">
+                    <description><![CDATA[The name of the configuration to be used to execute this component]]></description>
+                </parameter>
+                <parameter name="primaryNodeOnly">
+                    <description><![CDATA[Whether this source should only be executed on the primary node when runnning in Cluster]]></description>
+                </parameter>
+                <parameter name="schedulingStrategy">
+                    <description><![CDATA[Configures the scheduler that triggers the polling]]></description>
+                </parameter>
+                <parameter name="streamingStrategy">
+                    <description><![CDATA[Configure if repeatable streams should be used and their behaviour]]></description>
+                </parameter>
+                <parameter name="redeliveryPolicy">
+                    <description><![CDATA[Defines a policy for processing the redelivery of the same message]]></description>
+                </parameter>
+                <parameter name="spreadsheetId">
+                    <description><![CDATA[The ID of the spreadsheet.]]></description>
+                </parameter>
+                <parameter name="worksheetName">
+                    <description><![CDATA[The name of the worksheet.]]></description>
+                </parameter>
+                <parameter name="reconnectionStrategy">
+                    <description><![CDATA[A retry strategy in case of connectivity errors]]></description>
+                </parameter>
+            </parameters>
+        </source>
+        <source name="new-spreadsheet-listener">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="responseTimeout">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseTimeoutTimeUnit">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="config-ref">
+                    <description><![CDATA[The name of the configuration to be used to execute this component]]></description>
+                </parameter>
+                <parameter name="primaryNodeOnly">
+                    <description><![CDATA[Whether this source should only be executed on the primary node when runnning in Cluster]]></description>
+                </parameter>
+                <parameter name="schedulingStrategy">
+                    <description><![CDATA[Configures the scheduler that triggers the polling]]></description>
+                </parameter>
+                <parameter name="streamingStrategy">
+                    <description><![CDATA[Configure if repeatable streams should be used and their behaviour]]></description>
+                </parameter>
+                <parameter name="redeliveryPolicy">
+                    <description><![CDATA[Defines a policy for processing the redelivery of the same message]]></description>
+                </parameter>
+                <parameter name="reconnectionStrategy">
+                    <description><![CDATA[A retry strategy in case of connectivity errors]]></description>
+                </parameter>
+            </parameters>
+        </source>
+        <source name="updated-row-listener">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="responseTimeout">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="responseTimeoutTimeUnit">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="includeNewRows">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="monitoredColumns">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="config-ref">
+                    <description><![CDATA[The name of the configuration to be used to execute this component]]></description>
+                </parameter>
+                <parameter name="primaryNodeOnly">
+                    <description><![CDATA[Whether this source should only be executed on the primary node when runnning in Cluster]]></description>
+                </parameter>
+                <parameter name="schedulingStrategy">
+                    <description><![CDATA[Configures the scheduler that triggers the polling]]></description>
+                </parameter>
+                <parameter name="streamingStrategy">
+                    <description><![CDATA[Configure if repeatable streams should be used and their behaviour]]></description>
+                </parameter>
+                <parameter name="redeliveryPolicy">
+                    <description><![CDATA[Defines a policy for processing the redelivery of the same message]]></description>
+                </parameter>
+                <parameter name="spreadsheetId">
+                    <description><![CDATA[The ID of the spreadsheet.]]></description>
+                </parameter>
+                <parameter name="worksheetName">
+                    <description><![CDATA[The name of the worksheet.]]></description>
+                </parameter>
+                <parameter name="reconnectionStrategy">
+                    <description><![CDATA[A retry strategy in case of connectivity errors]]></description>
+                </parameter>
+            </parameters>
+        </source>
+    </sources>
+    <types>
+        <type name="com.mulesoft.connectivity.rest.commons.api.operation.HttpResponseAttributes">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="statusCode">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="headers">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="reasonPhrase">
+                    <description><![CDATA[]]></description>
+                </parameter>
+            </parameters>
+        </type>
+        <type name="com.mulesoft.connectivity.rest.commons.api.proxy.HttpProxyConfig">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="host">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="port">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="username">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="password">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="nonProxyHosts">
+                    <description><![CDATA[]]></description>
+                </parameter>
+            </parameters>
+        </type>
+        <type name="com.mulesoft.connectivity.rest.commons.api.request.QueryParam">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="key">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="value">
+                    <description><![CDATA[]]></description>
+                </parameter>
+            </parameters>
+        </type>
+        <type name="com.mulesoft.connectivity.rest.commons.api.request.RequestHeader">
+            <description><![CDATA[]]></description>
+            <parameters>
+                <parameter name="key">
+                    <description><![CDATA[]]></description>
+                </parameter>
+                <parameter name="value">
+                    <description><![CDATA[]]></description>
+                </parameter>
+            </parameters>
+        </type>
+    </types>
+</extension-documentation>

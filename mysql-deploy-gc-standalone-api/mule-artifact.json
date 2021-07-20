@@ -1,0 +1,4 @@
+{
+  "minMuleVersion": "4.2.1-hf3",
+  "secureProperties": ["mysql.password"]
+}

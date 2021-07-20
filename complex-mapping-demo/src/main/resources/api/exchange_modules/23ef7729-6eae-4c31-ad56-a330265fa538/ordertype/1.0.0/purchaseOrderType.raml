@@ -1,0 +1,30 @@
+#%RAML 1.0 Library
+
+types:
+
+  addressType:
+    properties:
+      name: string
+      street: string
+      city: string
+      region: string
+      country: string
+      postalCode: string
+      
+  itemType:
+    properties:
+      productName: string
+      quantity: number
+      unitPrice: number
+      currency: string
+      partnNumber: string
+      comments: string
+
+  purchaseOrderType:
+    properties:
+      purchaseOrderNumber?: string
+      orderDate: date-only
+      deliveryNotes: string
+      billingAddress: addressType
+      shippingAddress: addressType
+      items: itemType[]

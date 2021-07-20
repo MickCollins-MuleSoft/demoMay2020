@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<PurchaseOrder PurchaseOrderNumber="99503" OrderDate="1999-10-20">
+  <Address Type="Shipping">
+    <Name>Ellen Adams</Name>
+    <Street>123 Maple Street</Street>
+    <City>Beltsville</City>
+    <State>MD</State>
+    <Zip>20705</Zip>
+    <Country>USA</Country>
+  </Address>
+  <Address Type="Billing">
+    <Name>Tai Yee</Name>
+    <Street>8 Oak Avenue</Street>
+    <City>Old Town</City>
+    <State>PA</State>
+    <Zip>95819</Zip>
+    <Country>USA</Country>
+  </Address>
+  <Items>
+    <Item PartNumber="872-AA">
+      <ProductName>Lawnmower</ProductName>
+      <Quantity>1</Quantity>
+      <USPrice>189.09</USPrice>
+      <Comment>Electric</Comment>
+    </Item>
+    <Item PartNumber="322-SS">
+      <ProductName>Baby Monitor</ProductName>
+      <Quantity>2</Quantity>
+      <USPrice>39.99</USPrice>
+      <ShipDate>2020-09-09</ShipDate>
+    </Item>
+  </Items>
+</PurchaseOrder>

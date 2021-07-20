@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogs xmlns="http://www.mulesoft.org/schema/mule/types" >
+
+    
+                    <catalog name="create-order-fulfillment-request-type" format="application/json">
+                <schema format="application/json+schema" location="./create-order-fulfillment-request-data-schema.json" />
+            </catalog>
+        
+                    <catalog name="create-order-fulfillment-response-type" format="application/json">
+                <schema format="application/json+schema" location="./create-order-fulfillment-response-data-schema.json" />
+            </catalog>
+        
+                                                                                        
+    
+</catalogs>

@@ -1,0 +1,48 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/16da6a99-a48c-436c-abec-977a2f0f182b/ # 
+title: New API
+
+types:
+  
+
+  addressType:
+    properties:
+      name: string
+      street: string
+      city: string
+      region: string
+      country: string
+      postalCode: string
+      
+  itemType:
+    properties:
+      productName: string
+      quantity: number
+      unitPrice: number
+      currency: string
+      partNumber: string
+      shipDate: date-only
+      comments?: string
+
+  purchaseOrderType:
+    properties:
+      purchaseOrderNumber: string
+      orderDate: date-only
+      deliveryNotes?: string
+      billingAddress: addressType
+      shippingAddress: addressType
+      items: itemType[]
+
+/order:
+  post:
+    description: Receive XML and return JSON
+    body:
+      application/xml:
+        type: !include /examples/po.xsd
+        example: !include /examples/poExample.xml
+    responses:
+      "200":
+        body:
+          application/json:
+            type: purchaseOrderType
+            example: !include /examples/poExample.json

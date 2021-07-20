@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+	<flow name="pom-demo-delete-2Flow" doc:id="990d9138-5995-460e-84f0-b010e75d8fa0" >
+		<http:listener doc:name="Listener" doc:id="9474f5e9-e561-40b6-8962-34a8b26f74bd" />
+		<db:select doc:name="Select" doc:id="a3a606a1-cf98-4f09-a873-a0f83e79ffcb" />
+	</flow>
+</mule>

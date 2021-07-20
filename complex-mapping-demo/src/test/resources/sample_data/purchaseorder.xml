@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<PurchaseOrder PurchaseOrderNumber="2" OrderDate="2003-10-01">
+  <Address Type="????">
+    <Name>????</Name>
+    <Street>????</Street>
+    <City>????</City>
+    <State>????</State>
+    <Zip>2</Zip>
+    <Country>????</Country>
+  </Address>
+  <Items>
+    <Item PartNumber="????"/>
+  </Items>
+</PurchaseOrder>

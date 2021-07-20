@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="Order API"
+        prefix="order-api"
+        namespace="http://www.mulesoft.org/schema/mule/order-api"
+        
+        xmlns="http://www.mulesoft.org/schema/mule/module"
+        xmlns:mule="http://www.mulesoft.org/schema/mule/core"
+        xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+        xmlns:http="http://www.mulesoft.org/schema/mule/http"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+           http://www.mulesoft.org/schema/mule/module http://www.mulesoft.org/schema/mule/module/current/mule-module.xsd
+           http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+           http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+
+
+    <property name="property_host" displayName="host" type="string" defaultValue="localhost" summary="Host for consuming API"/>
+    <property name="property_port" displayName="port" type="string" defaultValue="8081" summary="Port for consuming API"/>
+    <property name="property_basePath" displayName="basePath" type="string" defaultValue="/api" summary="Basepath for consuming API"/>
+    <property name="property_protocol" displayName="protocol" type="string" defaultValue="HTTPS" summary="Protocol for consuming API"/>
+
+    
+    <http:request-config name="order-api-httpreq-config" basePath="#[vars.property_basePath]">
+        <http:request-connection
+                    host="#[vars.property_host]"
+                    protocol="#[vars.property_protocol]"
+                    port="#[vars.property_port]">
+                </http:request-connection>
+    </http:request-config>
+
+
+    <operation name="get-orders"  >
+                <parameters>
+                                        <parameter name="customer-id"                     type="string"
+                                        use="REQUIRED"                    />
+                            <parameter name="tracking-number"                     type="string"
+                                        use="OPTIONAL"                    />
+                            <parameter name="max-results"                     type="number"
+                    defaultValue="25"                    use="OPTIONAL"                    doc:description="The maximum number of entries to return. This is optional."/>
+                            <parameter name="offset"                     type="number"
+                    defaultValue="0"                    use="OPTIONAL"                    doc:description="The 1-based index of the first result to be retrieved (for paging)."/>
+                            <parameter name="client-id"                     type="string"
+                                        use="OPTIONAL"                    doc:description="Anypoint Platfrom application id"/>
+                            <parameter name="client-secret"                     type="string"
+                                        use="OPTIONAL"                    doc:description="Anypoint Platfrom application secret"/>
+                            <parameter name="content-type"                     type="string"
+                    defaultValue="application/json"                    use="OPTIONAL"                    doc:description="This is the format for what the API sends"/>
+                            <parameter name="accept"                     type="string"
+                    defaultValue="application/json"                    use="OPTIONAL"                    doc:description="This is the format for what the API receives"/>
+                    </parameters>
+                <body>
+            <http:request config-ref="order-api-httpreq-config" path="/orders" method="GET" >
+                
+                                                            <http:headers>
+                            <![CDATA[#[ { 'Content-Type': vars['content-type'],'Accept': vars['accept'] } filterObject $ != null ]]]>
+                        </http:headers>
+                                                                                    <http:query-params>
+                            <![CDATA[#[ { 'customerId': vars['customer-id'],'trackingNumber': vars['tracking-number'],'maxResults': vars['max-results'],'offset': vars['offset'],'client_id': vars['client-id'],'client_secret': vars['client-secret'] } filterObject $ != null ]]]>
+                        </http:query-params>
+                                                </http:request>
+            <mule:set-payload value="#[payload]" mimeType="application/json" />        </body>
+                    <output type="get-orders-response-type" />
+            </operation>
+    <operation name="create-order"  >
+                <parameters>
+                            <parameter name="create-order-request-data" type="create-order-request-type" use="REQUIRED" role="PRIMARY" />
+                                        <parameter name="client-id"                     type="string"
+                                        use="OPTIONAL"                    doc:description="Anypoint Platfrom application id"/>
+                            <parameter name="client-secret"                     type="string"
+                                        use="OPTIONAL"                    doc:description="Anypoint Platfrom application secret"/>
+                            <parameter name="content-type"                     type="string"
+                    defaultValue="application/json"                    use="OPTIONAL"                    doc:description="This is the format for what the API sends"/>
+                            <parameter name="accept"                     type="string"
+                    defaultValue="application/json"                    use="OPTIONAL"                    doc:description="This is the format for what the API receives"/>
+                    </parameters>
+                <body>
+            <http:request config-ref="order-api-httpreq-config" path="/orders" method="POST" >
+                                    <http:body>
+                        #[output application/json --- vars['create-order-request-data']]
+                    </http:body>
+                
+                                                            <http:headers>
+                            <![CDATA[#[ { 'Content-Type': vars['content-type'],'Accept': vars['accept'] } filterObject $ != null ]]]>
+                        </http:headers>
+                                                                                    <http:query-params>
+                            <![CDATA[#[ { 'client_id': vars['client-id'],'client_secret': vars['client-secret'] } filterObject $ != null ]]]>
+                        </http:query-params>
+                                                </http:request>
+            <mule:set-payload value="#[payload]" mimeType="application/json" />        </body>
+                    <output type="create-order-response-type" />
+            </operation>
+    <operation name="get-order-by-id"  >
+                <parameters>
+                                        <parameter name="client-id"                     type="string"
+                                        use="OPTIONAL"                    doc:description="Anypoint Platfrom application id"/>
+                            <parameter name="client-secret"                     type="string"
+                                        use="OPTIONAL"                    doc:description="Anypoint Platfrom application secret"/>
+                            <parameter name="id"                     type="string"
+                                        use="REQUIRED"                    doc:description="Represents the order unique id"/>
+                            <parameter name="content-type"                     type="string"
+                    defaultValue="application/json"                    use="OPTIONAL"                    doc:description="This is the format for what the API sends"/>
+                            <parameter name="accept"                     type="string"
+                    defaultValue="application/json"                    use="OPTIONAL"                    doc:description="This is the format for what the API receives"/>
+                    </parameters>
+                <body>
+            <http:request config-ref="order-api-httpreq-config" path="/orders/{id}" method="GET" >
+                
+                                                            <http:headers>
+                            <![CDATA[#[ { 'Content-Type': vars['content-type'],'Accept': vars['accept'] } filterObject $ != null ]]]>
+                        </http:headers>
+                                                                <http:uri-params>
+                            <![CDATA[#[ { 'id': vars['id'] } filterObject $ != null ]]]>
+                        </http:uri-params>
+                                                                <http:query-params>
+                            <![CDATA[#[ { 'client_id': vars['client-id'],'client_secret': vars['client-secret'] } filterObject $ != null ]]]>
+                        </http:query-params>
+                                                </http:request>
+            <mule:set-payload value="#[payload]" mimeType="application/json" />        </body>
+                    <output type="get-order-by-id-response-type" />
+            </operation>
+    <operation name="update-order-by-id"  >
+                <parameters>
+                            <parameter name="update-order-by-id-request-data" type="update-order-by-id-request-type" use="REQUIRED" role="PRIMARY" />
+                                        <parameter name="client-id"                     type="string"
+                                        use="OPTIONAL"                    doc:description="Anypoint Platfrom application id"/>
+                            <parameter name="client-secret"                     type="string"
+                                        use="OPTIONAL"                    doc:description="Anypoint Platfrom application secret"/>
+                            <parameter name="id"                     type="string"
+                                        use="REQUIRED"                    doc:description="Represents the order unique id"/>
+                            <parameter name="content-type"                     type="string"
+                    defaultValue="application/json"                    use="OPTIONAL"                    doc:description="This is the format for what the API sends"/>
+                            <parameter name="accept"                     type="string"
+                    defaultValue="application/json"                    use="OPTIONAL"                    doc:description="This is the format for what the API receives"/>
+                    </parameters>
+                <body>
+            <http:request config-ref="order-api-httpreq-config" path="/orders/{id}" method="PUT" >
+                                    <http:body>
+                        #[output application/json --- vars['update-order-by-id-request-data']]
+                    </http:body>
+                
+                                                            <http:headers>
+                            <![CDATA[#[ { 'Content-Type': vars['content-type'],'Accept': vars['accept'] } filterObject $ != null ]]]>
+                        </http:headers>
+                                                                <http:uri-params>
+                            <![CDATA[#[ { 'id': vars['id'] } filterObject $ != null ]]]>
+                        </http:uri-params>
+                                                                <http:query-params>
+                            <![CDATA[#[ { 'client_id': vars['client-id'],'client_secret': vars['client-secret'] } filterObject $ != null ]]]>
+                        </http:query-params>
+                                                </http:request>
+                    </body>
+            </operation>
+    <operation name="delete-order-by-id"  >
+                <parameters>
+                                        <parameter name="client-id"                     type="string"
+                                        use="OPTIONAL"                    doc:description="Anypoint Platfrom application id"/>
+                            <parameter name="client-secret"                     type="string"
+                                        use="OPTIONAL"                    doc:description="Anypoint Platfrom application secret"/>
+                            <parameter name="id"                     type="string"
+                                        use="REQUIRED"                    doc:description="Represents the order unique id"/>
+                            <parameter name="content-type"                     type="string"
+                    defaultValue="application/json"                    use="OPTIONAL"                    doc:description="This is the format for what the API sends"/>
+                            <parameter name="accept"                     type="string"
+                    defaultValue="application/json"                    use="OPTIONAL"                    doc:description="This is the format for what the API receives"/>
+                    </parameters>
+                <body>
+            <http:request config-ref="order-api-httpreq-config" path="/orders/{id}" method="DELETE" >
+                
+                                                            <http:headers>
+                            <![CDATA[#[ { 'Content-Type': vars['content-type'],'Accept': vars['accept'] } filterObject $ != null ]]]>
+                        </http:headers>
+                                                                <http:uri-params>
+                            <![CDATA[#[ { 'id': vars['id'] } filterObject $ != null ]]]>
+                        </http:uri-params>
+                                                                <http:query-params>
+                            <![CDATA[#[ { 'client_id': vars['client-id'],'client_secret': vars['client-secret'] } filterObject $ != null ]]]>
+                        </http:query-params>
+                                                </http:request>
+                    </body>
+            </operation>
+
+</module>

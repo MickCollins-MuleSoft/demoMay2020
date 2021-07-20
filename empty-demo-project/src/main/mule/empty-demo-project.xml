@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="d97f2518-e1d6-43d0-bd7c-0a5588ade5e9" basePath="/" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<db:config name="Database_Config" doc:name="Database Config" doc:id="f9157f54-e7c6-45ae-b734-01f4454aac95" >
+		<db:my-sql-connection host="localhost" port="3306" user="root" password="MuleSoft1" />
+	</db:config>
+	<flow name="empty-demo-projectFlow" doc:id="5df5826c-e2f7-4390-aaf5-49b2edd3259b" >
+		<http:listener doc:name="Listener" doc:id="76b0ada8-33c3-404d-bdf2-1ef02dbd63c2" config-ref="HTTP_Listener_config" path="/"/>
+		<db:select doc:name="Select" doc:id="d9d0bd9b-5e14-4935-950f-fe10012ed4ca" config-ref="Database_Config">
+			<db:sql ><![CDATA[select * from APPS.people;]]></db:sql>
+		</db:select>
+	</flow>
+</mule>
