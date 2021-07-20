@@ -16,7 +16,7 @@ pipeline {
       environment {  MYSQL_CREDENTIALS = credentials('PS_Team_MySQL')
       }  
       steps {
-        sh '/usr/local/bin/mvn -f mysql-people-git-demo-api/pom.xml clean package deploy -Dmule.username=${ANYPOINT_CREDENTIALS_USR} -Dmule.password=${ANYPOINT_CREDENTIALS_PSW} -Dmysql.host=52.55.148.195 -Dmysql.port=3306 -Dmysql.user=${MYSQL_CREDENTIALS_USR} -Dmysql.password=${MYSQL_CREDENTIALS_PSW} -Dmysql.database=People_MySQL -DmuleDeploy'
+        sh '/usr/local/bin/mvn -f mysql-people-git-demo-api/pom.xml clean package deploy -Dmule.username=${ANYPOINT_CREDENTIALS_USR} -Dmule.password=${ANYPOINT_CREDENTIALS_PSW} -Dmysql.host=uley.codnl2gdleuw.us-east-2.rds.amazonaws.com -Dmysql.port=3306 -Dmysql.user=${MYSQL_CREDENTIALS_USR} -Dmysql.password=${MYSQL_CREDENTIALS_PSW} -Dmysql.database=PROD -DmuleDeploy'
       }
       //comment lines begin with double slash, keep this as a reminder
     }
