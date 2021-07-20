@@ -29,7 +29,7 @@
         <powermockVersion>1.6.6</powermockVersion>
 
         <commonsLangVersion>3.6</commonsLangVersion>
-        <commonsIoVersion>2.4</commonsIoVersion>
+        <commonsIoVersion>2.7</commonsIoVersion>
         <guavaVersion>23.5-jre</guavaVersion>
         <formatterConfigPath>formatter.xml</formatterConfigPath>
 
