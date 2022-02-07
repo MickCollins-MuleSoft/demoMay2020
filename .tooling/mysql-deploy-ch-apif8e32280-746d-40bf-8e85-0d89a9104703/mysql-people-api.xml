@@ -129,26 +129,62 @@ output application/json
         </error-handler>
     </flow>
     <flow name="put:\people:mysql-people-api-config">
-        <set-payload value="#[p('mysql.host') ++ &quot;:&quot; ++ p('mysql.port') ++ &quot;:&quot; ++ p('mysql.user') ++ &quot;:&quot; ++ p('mysql.password') ++ &quot;:&quot; ++ p('mysql.database') ++ &quot;:&quot;]" doc:name="Set Payload" doc:id="9b6034ef-0b31-4991-a98d-7c8bfedf963a" />
-		<logger level="INFO" message="put:\people:mysql-people-api-config" />
+        <logger level="INFO" message="put:\people:mysql-people-api-config" />
     </flow>
     <flow name="get:\people:mysql-people-api-config">
-        <db:select doc:name="Select" doc:id="78360041-41e2-4471-869b-b0f4f6914467" config-ref="Database_Config">
-			<db:sql ><![CDATA[select id, fName, lName, governmentID, xrefID, issuingGovernment from people;]]></db:sql>
-		</db:select>
+        <db:select doc:name="Select" doc:id="78360041-41e2-4471-869b-b0f4f6914467" config-ref="Database_Config"/>
 		<ee:transform>
             <ee:message>
                 <ee:set-payload><![CDATA[%dw 2.0
 output application/json
 ---
-payload map ( payload01 , indexOfPayload01 ) -> {
-	lastName: payload01.lName,
-	systemID: payload01.id as String,
-	globalID: payload01.xrefID default "",
-	issuingGovernment: payload01.issuingGovernment,
-	firstName: payload01.fName,
-	governmentID: payload01.governmentID
-}]]></ee:set-payload>
+[
+  {
+    systemID: "1",
+    globalID: "0031U000007abF4QAI",
+    governmentID: "212-33-1966",
+    issuingGovernment: "USA-DC",
+    city: "Austin",
+    email: "rose@edge.com",
+    streetAddress: "313 Constitution Place",
+    country: "US",
+    postalCode: "78767",
+    lastName: "Gonzalez",
+    firstName: "Rose",
+    region: "TX",
+    telephone: "(512) 757-6000"
+  }, 
+  {
+    systemID: "2",
+    globalID: "0031U000007abF5QAI",
+    governmentID: "016-06-0266",
+    issuingGovernment: "USA-MA",
+    city: "Austin",
+    email: "sean@edge.com",
+    streetAddress: "312 Constitution Place",
+    country: "US",
+    postalCode: "78767",
+    lastName: "Forbes",
+    firstName: "Sean",
+    region: "TX",
+    telephone: "(512) 757-6000"
+  }, 
+  {
+    systemID: "3",
+    globalID: "0031U000007abF6QAI",
+    governmentID: "019-09-0992",
+    issuingGovernment: "USA-MD",
+    city: "Burlington",
+    email: "jrogers@burlington.com",
+    streetAddress: "525 S. Lexington Ave",
+    country: "USA",
+    postalCode: "27215",
+    lastName: "Rogers",
+    firstName: "Jack",
+    region: "NC",
+    telephone: "(336) 222-7000"
+  }
+]]]></ee:set-payload>
             </ee:message>
         </ee:transform>
     </flow>
