@@ -4,7 +4,7 @@ client_id=$1
 client_secret=$2
 mysqlHost=$3
 mysqlPort=$4
-mysqlUsername=$5
+mysqlUser=$5
 mysqlPassword=$6
 mysqlDatabase=$7
 
@@ -22,10 +22,10 @@ mysqlDatabase=$7
 
 # echo "Access Token $accessToken"
 
-# /usr/local/bin/mvn -f mysql-deploy-ch-api/pom.xml clean package deploy -DmuleDeploy -DauthorizationToken=$accessToken -Dmysql.host=$mysqlHost -Dmysql.port=$mysqlPort -Dmysql.username=$mysqlUsername -Dmysql.password=$mysqlPassword -Dmysql.database=$mysqlDatabase -DmuleDeploy
+# /usr/local/bin/mvn -f mysql-deploy-ch-api/pom.xml clean package deploy -DmuleDeploy -DauthorizationToken=$accessToken -Dmysql.host=$mysqlHost -Dmysql.port=$mysqlPort -Dmysql.username=$mysqlUser -Dmysql.password=$mysqlPassword -Dmysql.database=$mysqlDatabase -DmuleDeploy
 #
 # ========================================================================
 
-/usr/local/bin/mvn -f mysql-deploy-ch-api/pom.xml clean package deploy -DmuleDeploy -Dmysql.host=$mysqlHost -Dmysql.port=$mysqlPort -Dmysql.username=$mysqlUsername -Dmysql.password=$mysqlPassword -Dmysql.database=$mysqlDatabase -DmuleDeploy
+/usr/local/bin/mvn -f mysql-deploy-ch-api/pom.xml clean package deploy -DmuleDeploy -Dmysql.host=$mysqlHost -Dmysql.port=$mysqlPort -Dmysql.username=$mysqlUser -Dmysql.password=$mysqlPassword -Dmysql.database=$mysqlDatabase -DmuleDeploy
 
 echo End of Script
