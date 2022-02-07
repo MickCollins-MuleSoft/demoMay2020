@@ -1,6 +1,0 @@
-mysql:
-  host: "localhost"
-  port: "3306"
-  username: "root"
-  password: "MuleSoft1"
-  database: "APPS?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC"

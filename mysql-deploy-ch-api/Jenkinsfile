@@ -1,0 +1,37 @@
+pipeline {
+  agent any
+
+  //get AWS MySQL database username and password from Jenkins Credentials
+  environment {  
+    AWS_RDS_PERS = credentials('AWS_RDS_PERS') 
+  }
+  
+  //tools{
+  //    maven 'Maven_Local3.6.2'
+  //  }
+  stages {
+    //---------------------------------------------------
+    //Deploy to GovCloud
+    //---------------------------------------------------
+    stage('Deploy Government Cloud') {
+      //environment {  MYSQL_CREDENTIALS = credentials('AWS_RDS_PERS')
+      // add Connected App Client Id and Client Secret to the Jenkins credentials and 
+      //   pass the values as parameters to the deploy.sh to make it more reusable
+      //   GC_CA GovCloud_ConnectedApp
+      
+      steps {
+        //get GovCloud Connected App Client_Id and Client_Secret from Jenkins Credentials
+        withCredentials([[
+          $class: 'UsernamePasswordMultiBinding',
+          credentialsId: 'GC_CA_CREDENTIALS',
+          usernameVariable: 'GC_CA_CREDENTIALS_USR',
+          passwordVariable: 'GC_CA_CREDENTIALS_PSW', ]]) 
+         {
+           //sh '. ./deploy.sh'
+           sh 'bash ./mysql-deploy-ch-api/chDeploy.sh ${GC_CA_CREDENTIALS_USR} ${GC_CA_CREDENTIALS_PSW} muley.codnl2gdleuw.us-east-2.rds.amazonaws.com 3306 ${AWS_RDS_PERS_USR} ${AWS_RDS_PERS_PSW} MySQLAWS1'
+         }  
+      }
+      //comment lines begin with double slash, keep this as a reminder
+    }
+  }
+}
