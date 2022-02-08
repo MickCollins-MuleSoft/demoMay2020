@@ -8,6 +8,22 @@ mysqlUser=$5
 mysqlPassword=$6
 mysqlDatabase=$7
 
+
+export JAVA_HOME=$(/usr/libexec/java_home)
+PATH=/usr/local/bin;
+export PATH
+PATH=$PATH:/usr/bin;
+export PATH
+PATH=$PATH:/bin;
+export PATH
+PATH=$PATH:/usr/sbin;
+export PATH
+PATH=$PATH:/sbin;
+export PATH
+PATH=$JAVA_HOME:$PATH;
+export PATH
+
+
 # ========================================================================
 # Script was copied from app to deploy to GovCloud using Connected App
 # Commenting out, yet preserving commands for that deployment
