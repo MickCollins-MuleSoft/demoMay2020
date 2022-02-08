@@ -42,7 +42,7 @@ export PATH
 #
 # ========================================================================
 
-echo 'RUNNING MAVEN: /usr/local/bin/mvn -f mysql-deploy-ch-api/pom.xml clean package deploy -DmuleDeploy -Dmysql.host=' $mysqlHost ' -Dmysql.port=' $mysqlPort ' -Dmysql.username=' $mysqlUser ' -Dmysql.password=' $mysqlPassword ' -Dmysql.database=' $mysqlDatabase
-/usr/local/bin/mvn -f mysql-deploy-ch-api/pom.xml clean package deploy -DmuleDeploy -Dmysql.host=$mysqlHost -Dmysql.port=$mysqlPort -Dmysql.username=$mysqlUser -Dmysql.password=$mysqlPassword -Dmysql.database=$mysqlDatabase
+echo 'RUNNING MAVEN: /usr/local/bin/mvn -f mysql-deploy-ch-api/pom.xml clean package deploy -DmuleDeploy -Dmysql.host=' $mysqlHost ' -Dmysql.port=' $mysqlPort ' -Dmysql.user=' $mysqlUser ' -Dmysql.password=' $mysqlPassword ' -Dmysql.database=' $mysqlDatabase
+/usr/local/bin/mvn -f mysql-deploy-ch-api/pom.xml clean package deploy -DmuleDeploy -Dmysql.host=$mysqlHost -Dmysql.port=$mysqlPort -Dmysql.user=$mysqlUser -Dmysql.password=$mysqlPassword -Dmysql.database=$mysqlDatabase
 
 echo End of Script
