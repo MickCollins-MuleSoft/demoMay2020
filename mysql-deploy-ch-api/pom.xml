@@ -14,7 +14,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<app.runtime>4.4.0-20211227</app.runtime>
-		<mule.maven.plugin.version>3.5.2</mule.maven.plugin.version>
+		<mule.maven.plugin.version>3.4.0</mule.maven.plugin.version>
 	</properties>
 
 	<build>
@@ -49,7 +49,7 @@
 					  <properties>
 					    <mysql.host>${mysql.host}</mysql.host>
 						<mysql.port>${mysql.port}</mysql.port>
-						<mysql.username>${mysql.user}</mysql.username>
+						<mysql.user>${mysql.user}</mysql.user>
 						<mysql.password>${mysql.password}</mysql.password>
 						<mysql.database>${mysql.database}</mysql.database>
 					  </properties>
