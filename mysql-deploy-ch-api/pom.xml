@@ -14,7 +14,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<app.runtime>4.4.0-20211227</app.runtime>
-		<mule.maven.plugin.version>3.4.0</mule.maven.plugin.version>
+		<mule.maven.plugin.version>3.8.0</mule.maven.plugin.version>
 	</properties>
 
 	<build>
@@ -37,22 +37,22 @@
 						</sharedLibrary>
 					</sharedLibraries>
 					<cloudHubDeployment>
-					  <uri>https://anypoint.mulesoft.com</uri>
-					  <muleVersion>4.4.0</muleVersion>
-					  <username>MickSE</username>
-					  <password>March03041919</password>
-					  <applicationName>mysql-deploy-ch-api</applicationName>
-					  <environment>Sandbox</environment>
-					  <region>us-east-2</region>
-					  <workers>1</workers>
-					  <workerType>SMALL</workerType>
-					  <properties>
-					    <mysql.host>${mysql.host}</mysql.host>
-						<mysql.port>${mysql.port}</mysql.port>
-						<mysql.user>${mysql.user}</mysql.user>
-						<mysql.password>${mysql.password}</mysql.password>
-						<mysql.database>${mysql.database}</mysql.database>
-					  </properties>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>4.4.0</muleVersion>
+						<username>MickSE</username>
+						<password>March03041919</password>
+						<applicationName>mysql-deploy-ch-api</applicationName>
+						<environment>Sandbox</environment>
+						<region>us-east-2</region>
+						<workers>1</workers>
+						<workerType>SMALL</workerType>
+						<properties>
+							<mysql.host>${mysql.host}</mysql.host>
+							<mysql.port>${mysql.port}</mysql.port>
+							<mysql.user>${mysql.user}</mysql.user>
+							<mysql.password>${mysql.password}</mysql.password>
+							<mysql.database>${mysql.database}</mysql.database>
+						</properties>
 					</cloudHubDeployment>
 				</configuration>
 			</plugin>
@@ -109,6 +109,12 @@
 			<id>mulesoft-releases</id>
 			<name>MuleSoft Releases Repository</name>
 			<url>https://repository.mulesoft.org/releases/</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>anypoint-exchange-v3</id>
+			<name>Anypoint Exchange V3</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>
