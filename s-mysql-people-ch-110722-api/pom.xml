@@ -29,6 +29,33 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				<configuration>
+					<sharedLibraries>
+						<sharedLibrary>
+							<groupId>mysql</groupId>
+							<artifactId>mysql-connector-java</artifactId>
+						</sharedLibrary>
+					</sharedLibraries>
+					
+    				<cloudHubDeployment>
+      				  <uri>https://anypoint.mulesoft.com</uri>
+    				  <muleVersion>4.4.0</muleVersion>
+    				  <username>cd34b95df2f74bca904d33545404634e</username>
+     				  <password>a8821310dd38415a9c1120f7afa266D9</password>
+          			  <applicationName>s-mysql-people-ch-110722-api</applicationName>
+    				  <environment>Sandbox</environment>
+    				  <region>us-east-2</region>
+    				  <workers>1</workers>
+    				  <workerType>SMALL</workerType>
+    				  <properties>
+						<mysql.host>${mysql.host}</mysql.host>
+						<mysql.port>${mysql.port}</mysql.port>
+						<mysql.user>${mysql.user}</mysql.user>
+						<mysql.password>${mysql.password}</mysql.password>
+						<mysql.database>${mysql.database}</mysql.database>
+    				  </properties>
+    				</cloudHubDeployment>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -58,6 +85,17 @@
 			<artifactId>mule-apikit-module</artifactId>
 			<version>1.6.1</version>
 			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-db-connector</artifactId>
+			<version>1.13.7</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.29</version>
 		</dependency>
 	</dependencies>
 
