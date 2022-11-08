@@ -1,0 +1,37 @@
+pipeline {
+  agent any
+
+  //get AWS MySQL database username and password from Jenkins Credentials
+  //environment {  
+  //  AWS_RDS_PERS = credentials('AWS_RDS_PERS') 
+  //}
+  
+  //tools{
+  //    maven 'Maven_Local3.6.2'
+  //  }
+  stages {
+    //---------------------------------------------------
+    //Deploy to GovCloud
+    //---------------------------------------------------
+    stage('Deploy Cloudhub Connected App') {
+      // environment {  MYSQL_CREDENTIALS = credentials('AWS_RDS_PERS')
+       // add Connected App Client Id and Client Secret to the Jenkins credentials and 
+       //   pass the values as parameters to the deploy.sh to make it more reusable
+       //   GC_CA GovCloud_ConnectedApp
+      
+      steps {
+        //get GovCloud Connected App Client_Id and Client_Secret from Jenkins Credentials
+        //withCredentials([[
+        //  $class: 'UsernamePasswordMultiBinding',
+        //  credentialsId: 'GC_CA_CREDENTIALS',
+        //  usernameVariable: 'GC_CA_CREDENTIALS_USR',
+        //  passwordVariable: 'GC_CA_CREDENTIALS_PSW', ]]) 
+         {
+           //sh '. ./deploy.sh'
+           sh 'bash ./s-mysql-people-ch-110722-api/chDeploy.sh 4721556604aa427695e8ce9e21911c0b ee7435ED199b4960B6c01ab5593A4c69 cloud-services.demos.mulesoft.com 31371 adminProd MuleSoft030419-2022 prod'
+         }  
+      }
+      //comment lines begin with double slash, keep this as a reminder
+    }
+  }
+}
