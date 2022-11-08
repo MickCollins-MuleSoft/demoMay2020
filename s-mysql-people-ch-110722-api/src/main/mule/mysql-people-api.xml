@@ -147,7 +147,6 @@ payload map ( payload01 , indexOfPayload01 ) -> {
 	globalID: payload01.xrefID default "",
 	issuingGovernment: payload01.issuingGovernment,
 	firstName: payload01.fName,
-	middleName: payload01.mName,
 	governmentID: payload01.governmentID
 }]]></ee:set-payload>
             </ee:message>
