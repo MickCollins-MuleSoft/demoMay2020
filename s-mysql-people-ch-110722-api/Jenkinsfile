@@ -26,10 +26,10 @@ pipeline {
         //  credentialsId: 'GC_CA_CREDENTIALS',
         //  usernameVariable: 'GC_CA_CREDENTIALS_USR',
         //  passwordVariable: 'GC_CA_CREDENTIALS_PSW', ]]) 
-         executeShell: {
+         
            //sh '. ./deploy.sh'
            sh 'bash ./s-mysql-people-ch-110722-api/chDeploy.sh 4721556604aa427695e8ce9e21911c0b ee7435ED199b4960B6c01ab5593A4c69 cloud-services.demos.mulesoft.com 31371 adminProd MuleSoft030419-2022 prod'
-         }  
+           
       }
       //comment lines begin with double slash, keep this as a reminder
     }
