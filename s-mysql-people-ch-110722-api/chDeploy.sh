@@ -52,7 +52,7 @@ echo "Access Token $accessToken"
 # ========================================================================
 
 echo 'RUNNING MAVEN: /usr/local/bin/mvn -f s-mysql-people-ch-110722-api/pom.xml clean package deploy -DmuleDeploy -Dmysql.host=' $mysqlHost ' -Dmysql.port=' $mysqlPort ' -Dmysql.user=' $mysqlUser ' -Dmysql.password=' $mysqlPassword ' -Dmysql.database=' $mysqlDatabase
-/usr/local/bin/mvn -f s-mysql-people-ch-110722-api/pom.xml clean package deploy -DmuleDeploy -Dmysql.host=$mysqlHost -Dmysql.port=$mysqlPort -Dmysql.user=$mysqlUser -Dmysql.password=$mysqlPassword -Dmysql.database=$mysqlDatabase
+/usr/local/bin/mvn -f s-mysql-people-ch-110722-api/pom.xml clean package deploy -DmuleDeploy -Dmysql.host=$mysqlHost -Dmysql.port=$mysqlPort -Dmysql.user=$mysqlUser -Dmysql.password=$mysqlPassword -Dmysql.database=$mysqlDatabase -DauthorizationToken=$accessToken 
 
 echo End of Script
 
