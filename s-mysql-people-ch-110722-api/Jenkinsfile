@@ -26,11 +26,11 @@ pipeline {
           credentialsId: 'CH_CA_CI_CS',
           usernameVariable: 'CH_CA_Client_Id',
           passwordVariable: 'CH_CA_Client_Secret', ]]) 
-         
+         executeShell: {
            //sh '. ./deploy.sh'
            //sh 'bash ./s-mysql-people-ch-110722-api/chDeploy.sh 4721556604aa427695e8ce9e21911c0b ee7435ED199b4960B6c01ab5593A4c69 cloud-services.demos.mulesoft.com 31371 adminProd MuleSoft030419-2022 prod'
            sh 'bash ./s-mysql-people-ch-110722-api/chDeploy.sh CH_CA_Client_Id CH_CA_Client_Secret cloud-services.demos.mulesoft.com 31371 adminProd MuleSoft030419-2022 prod'
-           
+         }
       }
       //comment lines begin with double slash, keep this as a reminder
     }
