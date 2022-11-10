@@ -8,6 +8,11 @@ mysqlUser=$5
 mysqlPassword=$6
 mysqlDatabase=$7
 
+echo " "
+echo "======================================"
+echo "Client I: $client_id"
+echo "Client S: $client_secret"
+echo "======================================"
 
 export JAVA_HOME=$(/usr/libexec/java_home)
 PATH=/usr/local/bin;
